@@ -1,1 +1,1 @@
-Humaniq Identity Dapp
+Humaniq 1$ lunch
