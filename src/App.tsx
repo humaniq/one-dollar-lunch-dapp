@@ -38,29 +38,31 @@ export const App = observer(() => {
   }, []);
 
   return (
-    <div className="App">
-      {getProviderStore.initialized ? (
-        <Router>
-          <Routes>
-            <Route path={routes.home.path} element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-      ) : null}
-      <Snackbar
-        open={app.alert.displayAlert}
-        autoHideDuration={6000}
-        onClose={app.alert.alertClose}
-        style={{ backgroundColor: "white" }}
-      >
-        <Alert
+    <>
+      <div className="App">
+        {getProviderStore.initialized ? (
+          <Router>
+            <Routes>
+              <Route path={routes.home.path} element={<Home />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Router>
+        ) : null}
+        <Snackbar
+          open={app.alert.displayAlert}
+          autoHideDuration={6000}
           onClose={app.alert.alertClose}
-          severity="success"
-          sx={{ width: "100%" }}
+          style={{ backgroundColor: "white" }}
         >
-          {app.alert.alertMessage}
-        </Alert>
-      </Snackbar>
-    </div>
+          <Alert
+            onClose={app.alert.alertClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            {app.alert.alertMessage}
+          </Alert>
+        </Snackbar>
+      </div>
+    </>
   );
 });

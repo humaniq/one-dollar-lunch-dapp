@@ -43,5 +43,8 @@
     "one": "get charity donations;",
     "two": "find a job;",
     "three": "get business course;"
+  },
+  "transaction": {
+    "donate": "Donate {{0}}"
   }
 }
