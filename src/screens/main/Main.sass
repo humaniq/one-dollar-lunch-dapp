@@ -1,0 +1,55 @@
+@import "src/styles/vars"
+
+.container
+  height: 100%
+  display: flex
+  flex-direction: column
+  flex: 1
+  background-color: $white-snow
+  position: relative
+  padding: 16px
+  .header
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 16px
+    .title
+      font-style: normal
+      font-weight: 500
+      font-size: 20px
+      line-height: 24px
+      display: flex
+      align-items: center
+      letter-spacing: 0.5px
+      color: $blue-ocean
+    .wallet-connect
+      background-color: transparent
+      color: $blue-ocean
+      padding: 10px
+      border: $blue-ocean solid 2px
+      border-radius: 14px
+      font-style: normal
+      font-weight: 500
+      font-size: 14px
+      line-height: 16px
+      align-items: center
+      justify-content: center
+      text-align: center
+      letter-spacing: 0.5px
+  .tabs
+    display: flex
+    margin-top: 4px
+    .tabs-header
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+    .tabs-icons
+      display: flex
+      flex-direction: row
+      align-items: center
+      .search
+        height: 26px
+      .filter
+        height: 26px

@@ -26,6 +26,13 @@
   "notConnectedTitle": "Connect your wallet to see and edit your Humaniq ID information",
   "photoUploading": "Photo is uploading",
   "uploading": "Uploading",
+  "main": {
+    "yourDonations": "Your donations",
+    "donateRandomly": "Donate randomly",
+    "donateToChosen": "Donate to chosen",
+    "hotRequests": "Hot requests",
+    "allUsers": "All users"
+  },
   "userProfile": {
     "successUpdate": "Your profile successfully updated",
     "errorUpdate": "Error update profile",

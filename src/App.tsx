@@ -10,6 +10,7 @@ import { ETHProvider } from "./stores/providerStore";
 import { AlertProps, Snackbar } from "@mui/material";
 import { app } from "./stores/appStore/appStore";
 import MuiAlert from "@mui/material/Alert";
+import { Main } from "screens/main/Main";
 
 window.Buffer = b.Buffer;
 
@@ -43,7 +44,8 @@ export const App = observer(() => {
         {getProviderStore.initialized ? (
           <Router>
             <Routes>
-              <Route path={routes.home.path} element={<Home />} />
+              {/*<Route path={routes.home.path} element={<Home />} />*/}
+              <Route path={routes.home.path} element={<Main />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>

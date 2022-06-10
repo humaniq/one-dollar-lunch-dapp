@@ -1,0 +1,132 @@
+@import "src/styles/vars"
+
+.donation-card-container
+  position: relative
+  flex-direction: column
+  width: 100%
+  .donation-card
+    position: relative
+    border-radius: 16px
+    height: 216px
+    display: flex
+    background-color: $blue-ocean
+    overflow: hidden
+    .buttons-container
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      position: absolute
+      bottom: 18px
+      left: 10px
+      right: 10px
+      .left-button
+        display: flex
+        flex: 1
+        background-color: transparent
+        color: white
+        padding: 10px
+        border: white solid 2px
+        border-radius: 14px
+        font-style: normal
+        font-weight: 500
+        font-size: 14px
+        line-height: 16px
+        align-items: center
+        justify-content: center
+        text-align: center
+        letter-spacing: 0.5px
+        margin-right: 8px
+        &:hover
+          border: $hover-color solid 2px
+          color: $hover-color
+      .right-button
+        display: flex
+        flex: 1
+        background-color: transparent
+        color: white
+        padding: 10px
+        border: white solid 2px
+        border-radius: 14px
+        font-style: normal
+        font-weight: 500
+        font-size: 14px
+        line-height: 16px
+        align-items: center
+        justify-content: center
+        text-align: center
+        letter-spacing: 0.5px
+        margin-left: 8px
+        &:hover
+          border: $hover-color solid 2px
+          color: $hover-color
+    .balance-container
+      display: flex
+      flex-direction: column
+      position: absolute
+      z-index: 10
+      left: 16px
+      top: calc(50% - 44px)
+      .title
+        color: white
+        font-style: normal
+        font-weight: 700
+        font-size: 32px
+        line-height: 38px
+        letter-spacing: 0.5px
+      .sub-title
+        color: rgba(255, 255, 255, 0.7)
+        font-style: normal
+        font-weight: 500
+        font-size: 15px
+        line-height: 16px
+        letter-spacing: 0.5px
+        text-decoration-line: underline
+        margin-top: 4px
+    .address
+      display: flex
+      flex-direction: row
+      color: white
+      border: 1px solid white
+      border-radius: 12px
+      position: absolute
+      z-index: 10
+      top: 16px
+      right: 16px
+      padding: 6px 6px
+      align-items: center
+      span
+        font-weight: 500
+        padding-left: 5px
+    .lunch
+      position: absolute
+      top: 0
+      right: 1.8em
+      height: 100%
+    .avatar
+      height: 100px
+      width: 100px
+      position: absolute
+      top: calc(50% - 50px)
+      left: calc(50% - 50px)
+      z-index: 10
+    .name-container
+      z-index: 11
+      position: absolute
+      left: 0
+      top: calc(50% + 66px)
+      width: 100%
+      justify-content: center
+      text-align: center
+      flex: 1
+      .name
+        font-weight: 500
+        font-size: 16px
+    .bottom
+      width: 100%
+      position: absolute
+      bottom: 0
+      display: flex
+      flex: 1
+      height: 108px
+      background-color: $background-color
