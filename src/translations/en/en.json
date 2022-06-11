@@ -1,5 +1,5 @@
 {
-  "appName": "Humaniq Identity",
+  "appName": "1$ for lunch",
   "humaniqName": "Humaniq wallet",
   "walletConnectName": "WalletConnect",
   "web3Name": "WEB3",
@@ -32,6 +32,12 @@
     "donateToChosen": "Donate to chosen",
     "hotRequests": "Hot requests",
     "allUsers": "All users"
+  },
+  "filter": {
+    "sortBy": "Sort by",
+    "recentlyAdded": "Recently added",
+    "younger": "Younger",
+    "older": "Older"
   },
   "userProfile": {
     "successUpdate": "Your profile successfully updated",

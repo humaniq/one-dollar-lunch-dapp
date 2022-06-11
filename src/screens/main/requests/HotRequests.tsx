@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./HotRequests.sass";
+import { t } from "i18next";
 
 interface HotRequestItemProps {
   onDonateClick?: () => void;
@@ -17,7 +18,9 @@ const HotRequestItem: React.FC<HotRequestItemProps> = ({ onDonateClick }) => {
         <span className="title">Lupita Nyong'o</span>
         <span className="description">Tanzania, Dodoma</span>
         <button onClick={onDonateClick} className="button">
-          Donate $1
+          {t("transaction.donate", {
+            0: "$1",
+          })}
         </button>
       </div>
     </div>

@@ -26,9 +26,9 @@
     .wallet-connect
       background-color: transparent
       color: $blue-ocean
-      padding: 10px
+      padding: 8px 12px
       border: $blue-ocean solid 2px
-      border-radius: 14px
+      border-radius: 16px
       font-style: normal
       font-weight: 500
       font-size: 14px
@@ -37,11 +37,15 @@
       justify-content: center
       text-align: center
       letter-spacing: 0.5px
+      &:hover
+        color: $grey-text
+        border: $grey-text solid 2px
   .tabs
     display: flex
     margin-top: 4px
     .tabs-header
       display: flex
+      flex: 1
       flex-direction: row
       align-items: center
       justify-content: space-between
@@ -50,6 +54,8 @@
       flex-direction: row
       align-items: center
       .search
-        height: 26px
+        height: 21px
+        margin-left: 16px
       .filter
-        height: 26px
+        height: 21px
+        margin-left: 16px

@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { getProviderStore } from "../../App";
+import { getProviderStore } from "App";
 import {
   Avatar,
   Box,
@@ -10,7 +10,7 @@ import {
   SwipeableDrawer,
 } from "@mui/material";
 import { t } from "i18next";
-import { PROVIDERS } from "../../stores/providerStore";
+import { PROVIDERS } from "stores/providerStore";
 import HumaniqLogo from "../../static/images/humaniq-logo.svg";
 import WCLogo from "../../static/images/wallet-connect-logo.svg";
 import Web3Logo from "../../static/images/web3-logo.svg";

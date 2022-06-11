@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { SyntheticEvent, useCallback } from "react";
 import { DonationBalanceCard } from "components/donation-balance-card/DonationBalanceCard";
 import { Tab, Tabs, Typography, Box } from "@mui/material";
 import "./Main.sass";
@@ -8,24 +8,32 @@ import IC_SEARCH from "../../static/icons/ic_search.svg";
 import IC_FILTER from "../../static/icons/ic_filter.svg";
 import { HotRequests } from "screens/main/requests/HotRequests";
 import { AllUsers } from "screens/main/users/AllUsers";
+import { withStore } from "utils/hoc";
+import { MainViewModel } from "screens/main/MainViewModel";
+import { observer } from "mobx-react";
+import { ConnectDialog } from "components/dialogs/ConnectDialog";
+import { DisconnectDialog } from "components/dialogs/DisconnectDialog";
+import { getProviderStore } from "App";
+import { useNavigate } from "react-router-dom";
+import routes from "utils/routes";
+import { FilterDialog } from "screens/main/filter/FilterDialog";
 
-interface TabPanelProps {
+interface TabPanelInterface {
   children?: React.ReactNode;
+  style?: any;
   index: number;
   value: number;
 }
 
-const TabPanel = (props: TabPanelProps) => {
+interface MainScreenInterface {
+  store: MainViewModel;
+}
+
+const TabPanel = (props: TabPanelInterface) => {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
+    <div hidden={value !== index} id={`simple-tabpanel-${index}`} {...other}>
       {value === index && (
         <Box>
           <Typography>{children}</Typography>
@@ -35,18 +43,29 @@ const TabPanel = (props: TabPanelProps) => {
   );
 };
 
-export const Main = () => {
-  const [value, setValue] = useState(0);
+const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
+  const navigate = useNavigate();
+
+  const onSearchClick = useCallback(() => {
+    navigate(routes.search.path);
+  }, [navigate]);
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    view.setSelectedTabIndex(newValue);
   };
 
   return (
     <div className="container">
       <div className="header">
-        <div className="title">1$ for lunch</div>
-        <button className="wallet-connect">{t("connectWalletDialog")}</button>
+        <div className="title">{t("appName")}</div>
+        <button
+          onClick={view.toggleDialogOrDisconnectWallet}
+          className="wallet-connect"
+        >
+          {!getProviderStore.currentAccount
+            ? t("connectWalletDialog")
+            : t("disconnect")}
+        </button>
       </div>
       <DonationBalanceCard />
       <div className="tabs">
@@ -56,6 +75,7 @@ export const Main = () => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
+                width: "100%",
               }}
             >
               <Tabs
@@ -64,26 +84,54 @@ export const Main = () => {
                     backgroundColor: colors.blueOcean,
                   },
                 }}
-                value={value}
+                value={view.selectedTabIndex}
                 onChange={handleChange}
               >
-                <Tab label={<div>{t("main.hotRequests")}</div>} />
-                <Tab label={<div>{t("main.allUsers")}</div>} />
+                <Tab
+                  label={
+                    <span
+                      style={{
+                        fontStyle: "normal",
+                      }}
+                    >
+                      {t("main.hotRequests")}
+                    </span>
+                  }
+                />
+                <Tab label={<span>{t("main.allUsers")}</span>} />
               </Tabs>
             </Box>
             <div className="tabs-icons">
-              <img className="search" src={IC_SEARCH} alt="search-icon" />
-              <img className="filter" src={IC_FILTER} alt="filter-icon" />
+              <img
+                onClick={onSearchClick}
+                className="search"
+                src={IC_SEARCH}
+                alt="search-icon"
+              />
+              <img
+                onClick={() => view.setFilterVisibility(true)}
+                className="filter"
+                src={IC_FILTER}
+                alt="filter-icon"
+              />
             </div>
           </div>
-          <TabPanel value={value} index={0}>
-            <div>{value === 0 && <HotRequests />}</div>
+          <TabPanel value={view.selectedTabIndex} index={0}>
+            <div>{view.isFirstTabSelected && <HotRequests />}</div>
           </TabPanel>
-          <TabPanel value={value} index={1}>
-            <div>{value === 1 && <AllUsers />}</div>
+          <TabPanel value={view.selectedTabIndex} index={1}>
+            <div>{view.isSecondTabSelected && <AllUsers />}</div>
           </TabPanel>
         </Box>
       </div>
+      <ConnectDialog />
+      <DisconnectDialog />
+      <FilterDialog
+        visible={view.filterVisible}
+        onClose={() => view.setFilterVisibility(false)}
+      />
     </div>
   );
 };
+
+export const Main = withStore(MainViewModel, observer(MainImpl));

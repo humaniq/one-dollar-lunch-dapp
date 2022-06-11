@@ -6,11 +6,12 @@ import routes from "./utils/routes";
 import NotFound from "./screens/404/404";
 import b from "buffer";
 import { observer } from "mobx-react";
-import { ETHProvider } from "./stores/providerStore";
+import { ETHProvider } from "stores/providerStore";
 import { AlertProps, Snackbar } from "@mui/material";
-import { app } from "./stores/appStore/appStore";
+import { app } from "stores/appStore/appStore";
 import MuiAlert from "@mui/material/Alert";
 import { Main } from "screens/main/Main";
+import { Search } from "screens/search/Search";
 
 window.Buffer = b.Buffer;
 
@@ -46,6 +47,7 @@ export const App = observer(() => {
             <Routes>
               {/*<Route path={routes.home.path} element={<Home />} />*/}
               <Route path={routes.home.path} element={<Main />} />
+              <Route path={routes.search.path} element={<Search />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
