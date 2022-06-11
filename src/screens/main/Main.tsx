@@ -17,6 +17,7 @@ import { getProviderStore } from "App";
 import { useNavigate } from "react-router-dom";
 import routes from "utils/routes";
 import { FilterDialog } from "screens/main/filter/FilterDialog";
+import { TransactionDialog } from "components/transaction-dialog/TransactionDialog";
 
 interface TabPanelInterface {
   children?: React.ReactNode;
@@ -117,7 +118,15 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
             </div>
           </div>
           <TabPanel value={view.selectedTabIndex} index={0}>
-            <div>{view.isFirstTabSelected && <HotRequests />}</div>
+            <div>
+              {view.isFirstTabSelected && (
+                <HotRequests
+                  onDonateClick={() => {
+                    view.setTransactionDialogVisibility(true);
+                  }}
+                />
+              )}
+            </div>
           </TabPanel>
           <TabPanel value={view.selectedTabIndex} index={1}>
             <div>{view.isSecondTabSelected && <AllUsers />}</div>
@@ -129,6 +138,10 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
       <FilterDialog
         visible={view.filterVisible}
         onClose={() => view.setFilterVisibility(false)}
+      />
+      <TransactionDialog
+        onClose={() => view.setTransactionDialogVisibility(false)}
+        visible={view.transactionDialogVisible}
       />
     </div>
   );

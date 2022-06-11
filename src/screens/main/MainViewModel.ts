@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { getProviderStore } from "App";
 
 export class MainViewModel {
+  transactionDialogVisible = false;
   filterVisible = false;
   selectedTabIndex = 0;
 
@@ -16,6 +17,10 @@ export class MainViewModel {
   get isSecondTabSelected() {
     return this.selectedTabIndex === 1;
   }
+
+  setTransactionDialogVisibility = (visibility: boolean) => {
+    this.transactionDialogVisible = visibility;
+  };
 
   setFilterVisibility = (visibility: boolean) => {
     this.filterVisible = visibility;

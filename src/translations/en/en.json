@@ -57,6 +57,9 @@
     "two": "find a job;",
     "three": "get business course;"
   },
+  "search": {
+    "hint": "Search users by name / country / city"
+  },
   "transaction": {
     "donate": "Donate {{0}}"
   }

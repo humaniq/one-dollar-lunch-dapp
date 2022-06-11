@@ -6,6 +6,10 @@ interface HotRequestItemProps {
   onDonateClick?: () => void;
 }
 
+interface HotRequestsProps {
+  onDonateClick?: (item: any) => void;
+}
+
 const HotRequestItem: React.FC<HotRequestItemProps> = ({ onDonateClick }) => {
   return (
     <div className="request-item-container">
@@ -27,13 +31,16 @@ const HotRequestItem: React.FC<HotRequestItemProps> = ({ onDonateClick }) => {
   );
 };
 
-export const HotRequests = () => {
+export const HotRequests: React.FC<HotRequestsProps> = ({ onDonateClick }) => {
   useEffect(() => {}, []);
 
   return (
     <div className="requests">
       {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-        <HotRequestItem key={`hot_requests_item_${index}`} />
+        <HotRequestItem
+          onDonateClick={() => onDonateClick?.(item)}
+          key={`hot_requests_item_${index}`}
+        />
       ))}
     </div>
   );

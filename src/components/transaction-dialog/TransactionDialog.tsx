@@ -38,7 +38,7 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
     >
       <div className="transaction">
         <div className="header-container">
-          <IconButton>
+          <IconButton onClick={onClose}>
             <ArrowBackIcon sx={{ fontSize: 28, color: "#001833" }} />
           </IconButton>
         </div>
