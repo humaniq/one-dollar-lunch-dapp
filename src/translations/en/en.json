@@ -57,6 +57,9 @@
     "two": "find a job;",
     "three": "get business course;"
   },
+  "about": {
+    "donationsAppear": "Your donations will appear here"
+  },
   "search": {
     "hint": "Search users by name / country / city"
   },

@@ -47,6 +47,10 @@ const TabPanel = (props: TabPanelInterface) => {
 const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
+  const onCardClick = useCallback(() => {
+    navigate(routes.about.path);
+  }, [navigate]);
+
   const onSearchClick = useCallback(() => {
     navigate(routes.search.path);
   }, [navigate]);
@@ -68,7 +72,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
             : t("disconnect")}
         </button>
       </div>
-      <DonationBalanceCard />
+      <DonationBalanceCard onClick={onCardClick} />
       <div className="tabs">
         <Box sx={{ width: "100%" }}>
           <div className="tabs-header">

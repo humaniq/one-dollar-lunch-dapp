@@ -5,6 +5,9 @@ const routes = {
   search: {
     path: "/search",
   },
+  about: {
+    path: "/about",
+  },
 };
 
 export default routes;

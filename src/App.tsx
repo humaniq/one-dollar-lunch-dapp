@@ -12,6 +12,7 @@ import { app } from "stores/appStore/appStore";
 import MuiAlert from "@mui/material/Alert";
 import { Main } from "screens/main/Main";
 import { Search } from "screens/search/Search";
+import { About } from "screens/about/About";
 
 window.Buffer = b.Buffer;
 
@@ -48,6 +49,7 @@ export const App = observer(() => {
               {/*<Route path={routes.home.path} element={<Home />} />*/}
               <Route path={routes.home.path} element={<Main />} />
               <Route path={routes.search.path} element={<Search />} />
+              <Route path={routes.about.path} element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
