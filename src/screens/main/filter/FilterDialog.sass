@@ -1,0 +1,46 @@
+@import "src/styles/vars"
+
+.filter-dialog
+  display: flex
+  flex-direction: column
+  padding: 16px
+  background-color: $blue-ozone
+  .title
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 22px
+    margin-top: 10px
+    color: $blue-ocean
+  .content
+    margin-top: 10px
+    background-color: $white-snow
+    border-radius: 12px
+    .row
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      padding: 8px
+      &:nth-child(1)
+        border-top-left-radius: 12px
+        border-top-right-radius: 12px
+        border-style: solid
+        border-bottom-width: 0.5px
+        border-bottom-color: $grey-divider
+      &:nth-child(2)
+        border-radius: 0
+        border-style: solid
+        border-bottom-width: 0.5px
+        border-bottom-color: $grey-divider
+      &:nth-child(3)
+        border-bottom-left-radius: 12px
+        border-bottom-right-radius: 12px
+    .label
+      font-style: normal
+      font-weight: 400
+      font-size: 16px
+      line-height: 22px
+      display: flex
+      align-items: center
+      color: $blue-ocean

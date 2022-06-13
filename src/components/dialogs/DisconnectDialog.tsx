@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Box, Button, SwipeableDrawer } from "@mui/material";
-import { getProviderStore } from "../../App";
+import { getProviderStore } from "App";
 import { t } from "i18next";
 import "./styles.sass";
 
