@@ -48,7 +48,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
   const onCardClick = useCallback(() => {
-    navigate(routes.about.path);
+    navigate(routes.donations.path);
   }, [navigate]);
 
   const onSearchClick = useCallback(() => {

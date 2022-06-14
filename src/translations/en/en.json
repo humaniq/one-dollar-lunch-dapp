@@ -57,8 +57,11 @@
     "two": "find a job;",
     "three": "get business course;"
   },
-  "about": {
-    "donationsAppear": "Your donations will appear here"
+  "donations": {
+    "donationsAppear": "Your donations will appear here",
+    "totalDonate": "Total donates: {{0}}",
+    "statusReady": "Status is ready",
+    "statusWaiting": "Waiting for report"
   },
   "search": {
     "hint": "Search users by name / country / city"
