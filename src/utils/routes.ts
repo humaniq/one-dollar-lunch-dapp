@@ -5,8 +5,11 @@ const routes = {
   search: {
     path: "/search",
   },
-  about: {
-    path: "/about",
+  donations: {
+    path: "/donations",
+  },
+  donationDetails: {
+    path: "/donationDetails",
   },
 };
 

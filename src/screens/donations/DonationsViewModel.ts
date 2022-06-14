@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export class AboutViewModel {
+export class DonationsViewModel {
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
