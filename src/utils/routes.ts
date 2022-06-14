@@ -11,6 +11,9 @@ const routes = {
   donationDetails: {
     path: "/donationDetails",
   },
+  portfolio: {
+    path: "/portfolio",
+  },
 };
 
 export default routes;
