@@ -13,6 +13,7 @@ import { Main } from "screens/main/Main";
 import { Search } from "screens/search/Search";
 import { Donations } from "screens/donations/Donations";
 import { DonationDetails } from "screens/donation-details/DonationDetails";
+import { Portfolio } from "screens/portfolio/Portfolio";
 
 window.Buffer = b.Buffer;
 
@@ -53,6 +54,7 @@ export const App = observer(() => {
                 path={routes.donationDetails.path}
                 element={<DonationDetails />}
               />
+              <Route path={routes.portfolio.path} element={<Portfolio />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>

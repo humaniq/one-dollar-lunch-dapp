@@ -9,6 +9,8 @@ import { t } from "i18next";
 import SearchIllustration from "../../static/images/illustation_search.svg";
 import { DonationList } from "screens/donations/list/DonationList";
 import { useNavigate } from "react-router-dom";
+import routes from "utils/routes";
+import colors from "utils/colors";
 
 interface DonationsScreenInterface {
   store: DonationsViewModel;
@@ -21,6 +23,10 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
     navigate(-1);
   }, [navigate]);
 
+  const onDonationItemClick = useCallback(() => {
+    navigate(routes.donationDetails.path);
+  }, [navigate]);
+
   return (
     <div className="donations">
       <IconButton
@@ -31,7 +37,7 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         }}
         onClick={onBackClick}
       >
-        <ArrowBackIcon sx={{ fontSize: 28, color: "#001833" }} />
+        <ArrowBackIcon sx={{ fontSize: 28, color: colors.blueOcean }} />
       </IconButton>
       <div className="donations-balance-container">
         <div className={"title"}>$0.00</div>
@@ -44,7 +50,7 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         {/*    {t("donations.donationsAppear")}*/}
         {/*  </span>*/}
         {/*</div>*/}
-        <DonationList />
+        <DonationList onItemClick={onDonationItemClick} />
       </div>
     </div>
   );

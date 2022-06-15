@@ -4,7 +4,9 @@ import { t } from "i18next";
 import CheckIcon from "@mui/icons-material/Check";
 import colors from "utils/colors";
 
-interface DonationListInterface {}
+interface DonationListInterface {
+  onItemClick?: () => void;
+}
 
 interface DonationItemInterface {
   onClick?: () => void;
@@ -45,7 +47,9 @@ const DonationItem = ({ onClick }: DonationItemInterface) => {
   );
 };
 
-export const DonationList: React.FC<DonationListInterface> = ({}) => {
+export const DonationList: React.FC<DonationListInterface> = ({
+  onItemClick,
+}) => {
   return (
     <div className="donation-list-container">
       <span className="title">
@@ -57,17 +61,17 @@ export const DonationList: React.FC<DonationListInterface> = ({}) => {
         <Status
           appearance={"first"}
           counter={10}
-          text={t("donations.statusReady")}
+          text={t("donations.reportReady")}
         />
         <Status
           appearance={"second"}
           counter={5}
-          text={t("donations.statusWaiting")}
+          text={t("donations.reportWaiting")}
         />
       </div>
       <div className="donation-list">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
-          <DonationItem key={`donation_item_${index}`} />
+          <DonationItem key={`donation_item_${index}`} onClick={onItemClick} />
         ))}
       </div>
     </div>

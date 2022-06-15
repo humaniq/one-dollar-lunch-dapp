@@ -60,8 +60,17 @@
   "donations": {
     "donationsAppear": "Your donations will appear here",
     "totalDonate": "Total donates: {{0}}",
-    "statusReady": "Status is ready",
-    "statusWaiting": "Waiting for report"
+    "reportReady": "Report is ready",
+    "reportWaiting": "Waiting for report",
+    "details": {
+      "details": "Donation details",
+      "viewOnScan": "View on {{0}}",
+      "status": "Status",
+      "date": "Date",
+      "from": "From",
+      "to": "To",
+      "howMany": "How many"
+    }
   },
   "search": {
     "hint": "Search users by name / country / city"

@@ -3,7 +3,7 @@ import "./styles.sass";
 import { Avatar, Divider, Skeleton, styled } from "@mui/material";
 import Clouds from "../../static/images/clouds.svg";
 import Check from "../../static/images/check.svg";
-import { renderShortAddress } from "../../utils/address";
+import { renderShortAddress } from "utils/address";
 import { observer } from "mobx-react";
 
 const Root = styled("div")(({ theme }) => ({
