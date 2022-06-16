@@ -72,6 +72,10 @@
       "howMany": "How many"
     }
   },
+  "profiles": {
+    "selected": "{{0}} profiles selected",
+    "donate": "Donate"
+  },
   "search": {
     "hint": "Search users by name / country / city"
   },

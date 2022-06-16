@@ -14,6 +14,7 @@ import { Search } from "screens/search/Search";
 import { Donations } from "screens/donations/Donations";
 import { DonationDetails } from "screens/donation-details/DonationDetails";
 import { Portfolio } from "screens/portfolio/Portfolio";
+import { Profiles } from "screens/profiles/Profiles";
 
 window.Buffer = b.Buffer;
 
@@ -55,6 +56,7 @@ export const App = observer(() => {
                 element={<DonationDetails />}
               />
               <Route path={routes.portfolio.path} element={<Portfolio />} />
+              <Route path={routes.profiles.path} element={<Profiles />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>

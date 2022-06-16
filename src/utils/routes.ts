@@ -14,6 +14,9 @@ const routes = {
   portfolio: {
     path: "/portfolio",
   },
+  profiles: {
+    path: "/profiles",
+  },
 };
 
 export default routes;

@@ -1,6 +1,9 @@
 import React, { SyntheticEvent, useCallback } from "react";
-import { DonationBalanceCard } from "components/donation-balance-card/DonationBalanceCard";
-import { Tab, Tabs, Typography, Box } from "@mui/material";
+import {
+  DONATION_CLICK_TYPE,
+  DonationBalanceCard,
+} from "components/donation-balance-card/DonationBalanceCard";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
 import "./Main.sass";
 import { t } from "i18next";
 import colors from "utils/colors";
@@ -47,9 +50,17 @@ const TabPanel = (props: TabPanelInterface) => {
 const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
-  const onCardClick = useCallback(() => {
-    navigate(routes.donations.path);
-  }, [navigate]);
+  const onCardClick = useCallback(
+    (type?: DONATION_CLICK_TYPE) => {
+      if (type === DONATION_CLICK_TYPE.DEFAULT) {
+        navigate(routes.donations.path);
+      } else if (type === DONATION_CLICK_TYPE.DONATE_RANDOMLY) {
+      } else {
+        navigate(routes.profiles.path);
+      }
+    },
+    [navigate]
+  );
 
   const onSearchClick = useCallback(() => {
     navigate(routes.search.path);
