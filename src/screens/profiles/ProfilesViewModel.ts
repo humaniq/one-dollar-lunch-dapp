@@ -34,6 +34,10 @@ export class ProfilesViewModel {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
+  get selectionModeActive() {
+    return this.selectedProfiles.length > 0;
+  }
+
   get donateEnabled() {
     return this.selectedProfiles.length > 0;
   }
@@ -41,6 +45,10 @@ export class ProfilesViewModel {
   get selectionCount() {
     return this.selectedProfiles.length;
   }
+
+  clearSelections = () => {
+    this.selectedProfiles = [];
+  };
 
   handleDonateClick = () => {};
 

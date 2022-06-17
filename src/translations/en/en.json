@@ -26,12 +26,20 @@
   "notConnectedTitle": "Connect your wallet to see and edit your Humaniq ID information",
   "photoUploading": "Photo is uploading",
   "uploading": "Uploading",
+  "general": {
+    "maybeLater": "Maybe later"
+  },
   "main": {
     "yourDonations": "Your donations",
     "donateRandomly": "Donate randomly",
     "donateToChosen": "Donate to chosen",
     "hotRequests": "Hot requests",
     "allUsers": "All users"
+  },
+  "currency": {
+    "dialogTitle": "Choose what currency you want to donate",
+    "dialogSub": "For {{0}} people to donate for lunch",
+    "changeNetwork": "Change your network"
   },
   "filter": {
     "sortBy": "Sort by",

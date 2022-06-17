@@ -3,6 +3,7 @@ import Logcat from "../utils/logcat";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { rpc } from "../constants/api";
 import { getProviderStore } from "../App";
+import { EVM_NETWORKS, EVM_NETWORKS_NAMES } from "constants/network";
 
 export enum PROVIDERS {
   WEB3 = "WEB3",
@@ -18,10 +19,23 @@ export class ProviderStore {
   connectDialog = false;
   disconnectDialog = false;
   connectedProvider: PROVIDERS;
+  currentNetworkName = EVM_NETWORKS_NAMES.BSC_TESTNET;
 
   constructor() {
     makeAutoObservable(this, undefined, { autoBind: true });
   }
+
+  get currentNetwork() {
+    return this.networks[this.currentNetworkName];
+  }
+
+  get networks() {
+    return EVM_NETWORKS;
+  }
+
+  setCurrentNetwork = (network: any) => {
+    this.currentNetworkName = network;
+  };
 
   setProvider = async (type: PROVIDERS) => {
     try {
