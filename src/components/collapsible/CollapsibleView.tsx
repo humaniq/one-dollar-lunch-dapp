@@ -36,13 +36,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 ))(({ theme }) => ({
   paddingLeft: theme.spacing(1.3),
   paddingRight: theme.spacing(1.3),
-  borderRadius: 12,
-  backgroundColor: "#fff",
-  "& .MuiAccordionSummary-content": {
-    marginLeft: theme.spacing(0),
-    borderBottomLeftRadius: 12,
-    borderBottomRightRadius: 12,
-  },
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
@@ -64,7 +57,7 @@ export const CollapsibleView: React.FC<CollapsibleViewProps> = ({
         <AccordionSummary>
           <Typography
             sx={{
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: 400,
               color: colors.blueOcean,
             }}
