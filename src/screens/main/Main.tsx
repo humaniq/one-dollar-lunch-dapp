@@ -94,27 +94,9 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
                 width: "100%",
               }}
             >
-              <Tabs
-                sx={{
-                  ".MuiTabs-indicator": {
-                    backgroundColor: colors.blueOcean,
-                  },
-                }}
-                value={view.selectedTabIndex}
-                onChange={handleChange}
-              >
-                <Tab
-                  label={
-                    <span
-                      style={{
-                        fontStyle: "normal",
-                      }}
-                    >
-                      {t("main.hotRequests")}
-                    </span>
-                  }
-                />
-                <Tab label={<span>{t("main.allUsers")}</span>} />
+              <Tabs value={view.selectedTabIndex} onChange={handleChange}>
+                <Tab label={t("main.hotRequests")} />
+                <Tab label={t("main.allUsers")} />
               </Tabs>
             </Box>
             <div className="tabs-icons">
