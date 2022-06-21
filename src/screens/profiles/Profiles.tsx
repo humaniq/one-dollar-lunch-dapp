@@ -18,8 +18,12 @@ const ProfilesImpl: React.FC<ProfilesScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
   const onBackClick = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
+    if (view.selectionModeActive) {
+      view.clearSelections();
+    } else {
+      navigate(-1);
+    }
+  }, [navigate, view]);
 
   return (
     <div className="profiles">

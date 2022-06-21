@@ -6,7 +6,6 @@ import {
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import "./Main.sass";
 import { t } from "i18next";
-import colors from "utils/colors";
 import IC_SEARCH from "../../static/icons/ic_search.svg";
 import IC_FILTER from "../../static/icons/ic_filter.svg";
 import { HotRequests } from "screens/main/requests/HotRequests";
@@ -94,27 +93,9 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
                 width: "100%",
               }}
             >
-              <Tabs
-                sx={{
-                  ".MuiTabs-indicator": {
-                    backgroundColor: colors.blueOcean,
-                  },
-                }}
-                value={view.selectedTabIndex}
-                onChange={handleChange}
-              >
-                <Tab
-                  label={
-                    <span
-                      style={{
-                        fontStyle: "normal",
-                      }}
-                    >
-                      {t("main.hotRequests")}
-                    </span>
-                  }
-                />
-                <Tab label={<span>{t("main.allUsers")}</span>} />
+              <Tabs value={view.selectedTabIndex} onChange={handleChange}>
+                <Tab label={t("main.hotRequests")} />
+                <Tab label={t("main.allUsers")} />
               </Tabs>
             </Box>
             <div className="tabs-icons">

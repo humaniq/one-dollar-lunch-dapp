@@ -1,0 +1,101 @@
+@import "src/styles/vars"
+
+.currency-dialog
+  display: flex
+  flex-direction: column
+  padding: 16px
+  background-color: $blue-ozone
+  .title
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 22px
+    margin-top: 10px
+    color: $blue-ocean
+  .sub
+    font-style: normal
+    font-weight: 400
+    font-size: 14px
+    line-height: 18px
+    letter-spacing: 0.5px
+    margin-top: 13px
+    color: $blue-ocean
+  .content
+    margin-top: 14px
+    background-color: $white-snow
+    border-radius: 12px
+    .row
+      display: flex
+      flex-direction: row
+      align-items: center
+      padding: 8px
+      .icon
+        width: 44px
+        height: 44px
+      .content-row
+        flex: 1
+        flex-direction: column
+        margin-left: 8px
+        .title-container
+          display: flex
+          justify-content: space-between
+          margin-bottom: 10px
+          .title-first
+            font-style: normal
+            font-weight: 500
+            font-size: 16px
+            letter-spacing: 0.5px
+            color: $black-diamond
+          .title-second
+            font-style: normal
+            font-weight: 500
+            font-size: 16px
+            letter-spacing: 0.5px
+            color: $black-diamond
+        .description-container
+          display: flex
+          flex-direction: row
+          justify-content: space-between
+          margin-top: 10px
+          .description
+            font-style: normal
+            font-weight: 400
+            font-size: 14px
+            letter-spacing: 0.5px
+            color: $grey-text
+  .network
+    .row
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      padding: 12px
+      &:nth-child(1)
+        border-top-left-radius: 12px
+        border-top-right-radius: 12px
+        border-style: solid
+        border-bottom-width: 0.5px
+        border-bottom-color: $grey-divider
+      .label
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 22px
+        display: flex
+        align-items: center
+        color: $blue-ocean
+  .maybeLater
+    background-color: transparent
+    color: $blue-primary
+    margin-top: 40px
+    padding: 10px
+    border: none
+    border-radius: 12px
+    font-style: normal
+    font-weight: 500
+    font-size: 14px
+    line-height: 16px
+    text-align: center
+    letter-spacing: 0.5px
+    &:hover
+      color: $blue-ocean
