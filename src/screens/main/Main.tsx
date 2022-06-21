@@ -20,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 import routes from "utils/routes";
 import { FilterDialog } from "screens/main/filter/FilterDialog";
 import { TransactionDialog } from "components/transaction-dialog/TransactionDialog";
-import { CurrencyDialog } from "components/currency-dialog/CurrencyDialog";
 
 interface TabPanelInterface {
   children?: React.ReactNode;
@@ -140,7 +139,6 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
         onClose={() => view.setTransactionDialogVisibility(false)}
         visible={view.transactionDialogVisible}
       />
-      <CurrencyDialog visible={true} />
     </div>
   );
 };
