@@ -1,6 +1,6 @@
 import React from "react";
 import "./CurrencyDialog.sass";
-import { SwipeableDrawer } from "@mui/material";
+import { FormControlLabel, SwipeableDrawer } from "@mui/material";
 import { CurrencyViewModel } from "components/currency-dialog/CurrencyViewModel";
 import { t } from "i18next";
 import { withStore } from "utils/hoc";
@@ -40,7 +40,7 @@ const CurrencyDialogImpl = ({
   onClose = noop,
   onOpen = noop,
 }: CurrencyDialogInterface) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: any) => {
     getProviderStore.setCurrentNetwork(event.target.value);
   };
 
@@ -78,33 +78,53 @@ const CurrencyDialogImpl = ({
         <CollapsibleView title={t("currency.changeNetwork")}>
           <div className="network">
             <div className="row">
-              <span className="label">
-                {toUpperCase(EVM_NETWORKS_NAMES.BSC)}
-              </span>
-              <Radio
-                value={EVM_NETWORKS_NAMES.BSC}
-                onChange={handleChange}
+              <FormControlLabel
                 sx={{
                   padding: 0,
+                  margin: 0,
                 }}
+                value={EVM_NETWORKS_NAMES.BSC}
+                onChange={handleChange}
                 checked={
                   getProviderStore.currentNetworkName === EVM_NETWORKS_NAMES.BSC
+                }
+                control={
+                  <Radio
+                    sx={{
+                      padding: 0,
+                    }}
+                  />
+                }
+                label={
+                  <span className="label">
+                    {toUpperCase(EVM_NETWORKS_NAMES.BSC)}
+                  </span>
                 }
               />
             </div>
             <div className="row">
-              <span className="label">
-                {toUpperCase(EVM_NETWORKS_NAMES.BSC_TESTNET)}
-              </span>
-              <Radio
-                value={EVM_NETWORKS_NAMES.BSC_TESTNET}
-                onChange={handleChange}
+              <FormControlLabel
                 sx={{
                   padding: 0,
+                  margin: 0,
                 }}
+                value={EVM_NETWORKS_NAMES.BSC_TESTNET}
+                onChange={handleChange}
                 checked={
                   getProviderStore.currentNetworkName ===
                   EVM_NETWORKS_NAMES.BSC_TESTNET
+                }
+                control={
+                  <Radio
+                    sx={{
+                      padding: 0,
+                    }}
+                  />
+                }
+                label={
+                  <span className="label">
+                    {toUpperCase(EVM_NETWORKS_NAMES.BSC_TESTNET)}
+                  </span>
                 }
               />
             </div>

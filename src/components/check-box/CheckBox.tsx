@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CheckBox.sass";
 import CheckIcon from "@mui/icons-material/Check";
 import colors from "utils/colors";
@@ -10,6 +10,10 @@ interface CheckBoxProps {
 
 export const CheckBox = ({ onChecked, checked = false }: CheckBoxProps) => {
   const [selected, setSelected] = useState(checked);
+
+  useEffect(() => {
+    setSelected(checked);
+  }, [checked]);
 
   return (
     <div
