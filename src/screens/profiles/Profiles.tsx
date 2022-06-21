@@ -68,6 +68,7 @@ const ProfilesImpl: React.FC<ProfilesScreenInterface> = ({ store: view }) => {
                   })}
                 </button>
                 <CheckBox
+                  checked={view.selectedProfiles.includes(item)}
                   onChecked={(checked: boolean) => {
                     view.handleSelection(item, checked);
                   }}
