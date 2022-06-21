@@ -6,7 +6,6 @@ import {
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import "./Main.sass";
 import { t } from "i18next";
-import colors from "utils/colors";
 import IC_SEARCH from "../../static/icons/ic_search.svg";
 import IC_FILTER from "../../static/icons/ic_filter.svg";
 import { HotRequests } from "screens/main/requests/HotRequests";
