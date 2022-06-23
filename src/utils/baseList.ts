@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import { ApiService } from "../services/apiService/apiService";
 import { API_HUMANIQ_TOKEN, API_HUMANIQ_URL } from "../constants/api";
 
@@ -48,7 +48,6 @@ export class BaseList<Model, Request> {
       {},
       { params: this.next || { ...this.params } }
     );
-    console.log({ result });
 
     if (result.isOk) {
       if (!this.initialized) {

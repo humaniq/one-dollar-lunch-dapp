@@ -5,7 +5,6 @@ import "./Main.sass";
 import { t } from "i18next";
 import IC_SEARCH from "../../static/icons/ic_search.svg";
 import IC_FILTER from "../../static/icons/ic_filter.svg";
-import { HotRequests } from "screens/main/requests/HotRequests";
 import { AllUsers } from "screens/main/users/AllUsers";
 import { withStore } from "utils/hoc";
 import { MainViewModel } from "screens/main/MainViewModel";
@@ -28,25 +27,14 @@ interface MainScreenInterface {
   store: MainViewModel;
 }
 
-const TabPanel = (props: TabPanelInterface) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div hidden={value !== index} id={`simple-tabpanel-${index}`} {...other}>
-      {value === index && (
-        <Box>
-          <div>{children}</div>
-        </Box>
-      )}
-    </div>
-  );
-};
-
 const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     view.init(navigate);
+    return () => {
+      view.destroy();
+    };
   }, []);
 
   return (
@@ -93,20 +81,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
               />
             </div>
           </div>
-          <TabPanel value={view.selectedTabIndex} index={0}>
-            <div>
-              {view.isFirstTabSelected && (
-                <HotRequests
-                  onDonateClick={() => {
-                    view.setTransactionDialogVisibility(true);
-                  }}
-                />
-              )}
-            </div>
-          </TabPanel>
-          <TabPanel value={view.selectedTabIndex} index={1}>
-            <div>{view.isSecondTabSelected && <AllUsers />}</div>
-          </TabPanel>
+          <AllUsers />
         </Box>
       </div>
       <ConnectDialog />

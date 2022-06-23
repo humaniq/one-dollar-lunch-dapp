@@ -1,4 +1,4 @@
-import { makeAutoObservable, reaction } from "mobx";
+import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { getProviderStore } from "App";
 import { UsersStore } from "../../stores/usersStore/usersStore";
 import { app } from "../../stores/appStore/appStore";
@@ -26,17 +26,24 @@ export class MainViewModel {
   order: ORDER;
   search: "";
   navigate: NavigateFunction;
+  firstReactionDispose: IReactionDisposer;
+  secondReactionDispose: IReactionDisposer;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
+
+  destroy = () => {
+    this.firstReactionDispose();
+    this.secondReactionDispose();
+  };
 
   init = (nav: NavigateFunction) => {
     this.navigate = nav;
 
     UsersStore.users.fetchList({ ...this.filter });
 
-    reaction(
+    this.firstReactionDispose = reaction(
       () => app.bottom,
       (val) => {
         if (!val) return;
@@ -44,7 +51,7 @@ export class MainViewModel {
       }
     );
 
-    reaction(
+    this.secondReactionDispose = reaction(
       () => this.filter,
       (val) => {
         if (!Object.values(val).length) return;

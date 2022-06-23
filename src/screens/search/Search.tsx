@@ -18,6 +18,9 @@ const SearchImpl: React.FC<SearchScreenInterface> = ({ store: view }) => {
 
   useEffect(() => {
     view.init(navigate);
+    return () => {
+      view.destroy();
+    };
   }, []);
 
   return (
