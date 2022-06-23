@@ -21,7 +21,7 @@ export interface TransactionDialogInterface {
 const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
   visible = false,
   onClose,
-  onOpen,
+  onOpen = () => {},
   store: view,
 }) => {
   useEffect(() => {
