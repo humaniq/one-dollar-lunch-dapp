@@ -1,21 +1,13 @@
-export const API_HUMANIQ_URL = "https://signupbot.humaniq.com/api/v1";
+import { v4 as uuidv4 } from "uuid";
+
+export const API_HUMANIQ_URL = "https://signupbot.humaniq.com/api/v0";
 export const API_HUMANIQ_TOKEN = "XMaLhU75ZFklvAiV7yBZBNnlWsE9IowU";
 
+export const hotRequestSeed = uuidv4();
+export const usersSeed = uuidv4();
+
 export const HUMANIQ_ROUTES = {
-  INTROSPECT: {
-    POST_SIGNUP_CHECK: "/introspect/signup/check",
-    POST_SIGNUP_CONFIRM: "/introspect/signup/confirm",
-    GET_SIGNUP_OBJECT: "/introspect/signup/object/:uid",
-    GET_SIGNUP_PHOTO: "/introspect/signup/photo/:uid",
-    GET_SIGNUP_WALLET: "/introspect/signup/wallet/:wallet",
-  },
-  DAPP: {
-    POST_PROFILE_UPDATE: "/dapp/profile/update",
-    POST_PROFILE_PHOTO_UPDATE: "/photo/upload",
-  },
-  PHOTO: {
-    POST_PHOTO: "/photo/upload",
-  },
+  GET_USERS_LIST: "/one_dollar_for_lunch/list",
 };
 
 export const rpc = {

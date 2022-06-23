@@ -15,16 +15,19 @@ export interface FilterDialogInterface {
   visible: boolean;
   onClose: () => void;
   onOpen: () => void;
+  onChange: (index: number) => void;
 }
 
 const FilterDialogImpl: React.FC<FilterDialogInterface> = ({
   store: view,
   visible = false,
   onClose,
-  onOpen,
+  onOpen = () => {},
+  onChange = () => {},
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     view.setSelectedIndex(parseInt(event.target.value));
+    onChange(parseInt(event.target.value));
   };
 
   return (

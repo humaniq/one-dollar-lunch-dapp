@@ -1,9 +1,6 @@
-import React, { SyntheticEvent, useCallback } from "react";
-import {
-  DONATION_CLICK_TYPE,
-  DonationBalanceCard,
-} from "components/donation-balance-card/DonationBalanceCard";
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { DonationBalanceCard } from "components/donation-balance-card/DonationBalanceCard";
+import { Box, Tab, Tabs } from "@mui/material";
 import "./Main.sass";
 import { t } from "i18next";
 import IC_SEARCH from "../../static/icons/ic_search.svg";
@@ -17,7 +14,6 @@ import { ConnectDialog } from "components/dialogs/ConnectDialog";
 import { DisconnectDialog } from "components/dialogs/DisconnectDialog";
 import { getProviderStore } from "App";
 import { useNavigate } from "react-router-dom";
-import routes from "utils/routes";
 import { FilterDialog } from "screens/main/filter/FilterDialog";
 import { TransactionDialog } from "components/transaction-dialog/TransactionDialog";
 
@@ -39,7 +35,7 @@ const TabPanel = (props: TabPanelInterface) => {
     <div hidden={value !== index} id={`simple-tabpanel-${index}`} {...other}>
       {value === index && (
         <Box>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -49,25 +45,9 @@ const TabPanel = (props: TabPanelInterface) => {
 const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
 
-  const onCardClick = useCallback(
-    (type?: DONATION_CLICK_TYPE) => {
-      if (type === DONATION_CLICK_TYPE.DEFAULT) {
-        navigate(routes.donations.path);
-      } else if (type === DONATION_CLICK_TYPE.DONATE_RANDOMLY) {
-      } else {
-        navigate(routes.profiles.path);
-      }
-    },
-    [navigate]
-  );
-
-  const onSearchClick = useCallback(() => {
-    navigate(routes.search.path);
-  }, [navigate]);
-
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
-    view.setSelectedTabIndex(newValue);
-  };
+  useEffect(() => {
+    view.init(navigate);
+  }, []);
 
   return (
     <div className="container">
@@ -82,7 +62,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
             : t("disconnect")}
         </button>
       </div>
-      <DonationBalanceCard onClick={onCardClick} />
+      <DonationBalanceCard onClick={view.onCardClick} />
       <div className="tabs">
         <Box sx={{ width: "100%" }}>
           <div className="tabs-header">
@@ -93,14 +73,14 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
                 width: "100%",
               }}
             >
-              <Tabs value={view.selectedTabIndex} onChange={handleChange}>
+              <Tabs value={view.selectedTabIndex} onChange={view.handleChange}>
                 <Tab label={t("main.hotRequests")} />
                 <Tab label={t("main.allUsers")} />
               </Tabs>
             </Box>
             <div className="tabs-icons">
               <img
-                onClick={onSearchClick}
+                onClick={view.onSearchClick}
                 className="search"
                 src={IC_SEARCH}
                 alt="search-icon"
@@ -132,6 +112,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
       <ConnectDialog />
       <DisconnectDialog />
       <FilterDialog
+        onChange={view.changeSort}
         visible={view.filterVisible}
         onClose={() => view.setFilterVisibility(false)}
       />
