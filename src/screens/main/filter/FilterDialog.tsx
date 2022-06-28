@@ -9,7 +9,7 @@ import {
 } from "screens/main/filter/FilterViewModel";
 import { observer } from "mobx-react";
 import { t } from "i18next";
-import { Puller } from "components/currency-dialog/CurrencyDialog";
+import { Puller } from "components/puller/Puller";
 
 export interface FilterDialogInterface {
   store: FilterViewModel;

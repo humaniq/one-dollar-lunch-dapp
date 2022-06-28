@@ -4,6 +4,7 @@ import { Box, Button, SwipeableDrawer } from "@mui/material";
 import { getProviderStore } from "App";
 import { t } from "i18next";
 import "./styles.sass";
+import { Puller } from "components/puller/Puller";
 
 export interface DisconnectDialogProps {}
 
@@ -17,6 +18,7 @@ export const DisconnectDialog: React.FC<DisconnectDialogProps> = observer(
         onOpen={getProviderStore.toggleDisconnectDialog}
         style={{ borderRadius: 16 }}
       >
+        <Puller />
         <Box
           className={"drawer-container"}
           sx={{ width: "auto", minHeight: 300 }}

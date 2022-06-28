@@ -10,6 +10,7 @@ import { observer } from "mobx-react";
 import { TransactionViewModel } from "./TransactionViewModel";
 import { withStore } from "utils/hoc";
 import { t } from "i18next";
+import { Puller } from "components/puller/Puller";
 
 export interface TransactionDialogInterface {
   store: TransactionViewModel;
@@ -36,6 +37,7 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
       onOpen={onOpen}
       style={{ borderRadius: 16 }}
     >
+      <Puller />
       <div className="transaction">
         <div className="header-container">
           <IconButton onClick={onClose}>
