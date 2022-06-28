@@ -5,7 +5,7 @@ import colors from "utils/colors";
 export const Puller = styled(Box)(({ theme }) => ({
   width: 40,
   height: 4,
-  backgroundColor: colors.blueOcean,
+  backgroundColor: colors.textGrey,
   borderRadius: 3,
   position: "absolute",
   top: 6,
