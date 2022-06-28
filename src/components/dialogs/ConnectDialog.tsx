@@ -15,6 +15,7 @@ import HumaniqLogo from "../../static/images/humaniq-logo.svg";
 import WCLogo from "../../static/images/wallet-connect-logo.svg";
 import Web3Logo from "../../static/images/web3-logo.svg";
 import "./styles.sass";
+import { Puller } from "components/puller/Puller";
 
 export interface ConnectDialogProps {}
 
@@ -27,6 +28,7 @@ export const ConnectDialog: React.FC<ConnectDialogProps> = observer(() => {
       onOpen={getProviderStore.toggleConnectDialog}
       style={{ borderRadius: 16 }}
     >
+      <Puller />
       <Box
         className={"drawer-container"}
         sx={{ width: "auto", minHeight: 300 }}

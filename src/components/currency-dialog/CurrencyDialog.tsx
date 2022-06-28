@@ -8,12 +8,10 @@ import { observer } from "mobx-react";
 import BUSD from "static/icons/BUSD.png";
 import Radio from "@mui/material/Radio";
 import { CollapsibleView } from "components/collapsible/CollapsibleView";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import colors from "utils/colors";
 import { EVM_NETWORKS_NAMES } from "constants/network";
 import { getProviderStore } from "App";
 import { toUpperCase } from "utils/textUtils";
+import { Puller } from "components/puller/Puller";
 
 export interface CurrencyDialogInterface {
   store: CurrencyViewModel;
@@ -23,16 +21,6 @@ export interface CurrencyDialogInterface {
 }
 
 const noop = () => {};
-
-export const Puller = styled(Box)(({ theme }) => ({
-  width: 40,
-  height: 4,
-  backgroundColor: colors.blueOcean,
-  borderRadius: 3,
-  position: "absolute",
-  top: 6,
-  left: "calc(50% - 15px)",
-}));
 
 const CurrencyDialogImpl = ({
   store: view,
