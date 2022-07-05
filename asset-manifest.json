@@ -1,29 +1,32 @@
 {
   "files": {
-    "main.css": "./static/css/main.2c30c7cd.chunk.css",
-    "main.js": "./static/js/main.f317335d.chunk.js",
-    "main.js.map": "./static/js/main.f317335d.chunk.js.map",
+    "main.css": "./static/css/main.8471b637.chunk.css",
+    "main.js": "./static/js/main.14ce15f2.chunk.js",
+    "main.js.map": "./static/js/main.14ce15f2.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.cbaf1268.js",
     "runtime-main.js.map": "./static/js/runtime-main.cbaf1268.js.map",
-    "static/js/2.ed29f2dd.chunk.js": "./static/js/2.ed29f2dd.chunk.js",
-    "static/js/2.ed29f2dd.chunk.js.map": "./static/js/2.ed29f2dd.chunk.js.map",
+    "static/js/2.d31f00ce.chunk.js": "./static/js/2.d31f00ce.chunk.js",
+    "static/js/2.d31f00ce.chunk.js.map": "./static/js/2.d31f00ce.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.2c30c7cd.chunk.css.map": "./static/css/main.2c30c7cd.chunk.css.map",
-    "static/js/2.ed29f2dd.chunk.js.LICENSE.txt": "./static/js/2.ed29f2dd.chunk.js.LICENSE.txt",
+    "static/css/main.8471b637.chunk.css.map": "./static/css/main.8471b637.chunk.css.map",
+    "static/js/2.d31f00ce.chunk.js.LICENSE.txt": "./static/js/2.d31f00ce.chunk.js.LICENSE.txt",
+    "static/media/BNB.12f6ca37.png": "./static/media/BNB.12f6ca37.png",
     "static/media/donation-soup.0852f7e6.svg": "./static/media/donation-soup.0852f7e6.svg",
     "static/media/humaniq-logo.cb2c62db.svg": "./static/media/humaniq-logo.cb2c62db.svg",
     "static/media/ic_change.b24d82e7.svg": "./static/media/ic_change.b24d82e7.svg",
+    "static/media/ic_cross.c014917d.svg": "./static/media/ic_cross.c014917d.svg",
     "static/media/ic_filter.eaf5032e.svg": "./static/media/ic_filter.eaf5032e.svg",
     "static/media/ic_max.55acdbd1.svg": "./static/media/ic_max.55acdbd1.svg",
     "static/media/ic_search.6d0afefc.svg": "./static/media/ic_search.6d0afefc.svg",
     "static/media/main-card-image.4f806b1d.svg": "./static/media/main-card-image.4f806b1d.svg",
     "static/media/wallet-connect-logo.6fa61a47.svg": "./static/media/wallet-connect-logo.6fa61a47.svg",
+    "static/media/wallet.f1596f01.svg": "./static/media/wallet.f1596f01.svg",
     "static/media/web3-logo.9ae2b06d.svg": "./static/media/web3-logo.9ae2b06d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.cbaf1268.js",
-    "static/js/2.ed29f2dd.chunk.js",
-    "static/css/main.2c30c7cd.chunk.css",
-    "static/js/main.f317335d.chunk.js"
+    "static/js/2.d31f00ce.chunk.js",
+    "static/css/main.8471b637.chunk.css",
+    "static/js/main.14ce15f2.chunk.js"
   ]
 }
