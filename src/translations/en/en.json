@@ -1,5 +1,5 @@
 {
-  "appName": "Humaniq Identity",
+  "appName": "1$ for lunch",
   "humaniqName": "Humaniq wallet",
   "walletConnectName": "WalletConnect",
   "web3Name": "WEB3",
@@ -26,6 +26,27 @@
   "notConnectedTitle": "Connect your wallet to see and edit your Humaniq ID information",
   "photoUploading": "Photo is uploading",
   "uploading": "Uploading",
+  "general": {
+    "maybeLater": "Maybe later"
+  },
+  "main": {
+    "yourDonations": "Your donations",
+    "donateRandomly": "Donate randomly",
+    "donateToChosen": "Donate to chosen",
+    "hotRequests": "Hot requests",
+    "allUsers": "All users"
+  },
+  "currency": {
+    "dialogTitle": "Choose what currency you want to donate",
+    "dialogSub": "For {{0}} people to donate for lunch",
+    "changeNetwork": "Change your network"
+  },
+  "filter": {
+    "sortBy": "Sort by",
+    "recentlyAdded": "Recently added",
+    "younger": "Younger",
+    "older": "Older"
+  },
   "userProfile": {
     "successUpdate": "Your profile successfully updated",
     "errorUpdate": "Error update profile",
@@ -43,5 +64,53 @@
     "one": "get charity donations;",
     "two": "find a job;",
     "three": "get business course;"
+  },
+  "donations": {
+    "donationsAppear": "Your donations will appear here",
+    "totalDonate": "Total donates: {{0}}",
+    "reportReady": "Report is ready",
+    "reportWaiting": "Waiting for report",
+    "details": {
+      "details": "Donation details",
+      "viewOnScan": "View on {{0}}",
+      "status": "Status",
+      "date": "Date",
+      "from": "From",
+      "to": "To",
+      "howMany": "How many"
+    }
+  },
+  "profiles": {
+    "selected": "{{0}} profiles selected",
+    "donate": "Donate"
+  },
+  "search": {
+    "hint": "Search users by name / country / city"
+  },
+  "transaction": {
+    "donate": "Donate {{0}}",
+    "fee": "Fee"
+  },
+  "transactionDialog": {
+    "title": "$1 for lunch.com",
+    "howMany": "How many",
+    "amount": "Amount",
+    "suggestedFee": "Suggested fee",
+    "total": "Total",
+    "later": "Maybe later",
+    "allow": "Yes, allow this transaction"
+  },
+  "transactionMessage": {
+    "pending": "Transaction is pending",
+    "success": "Thanks for donation",
+    "error": "Error transaction",
+    "denied": "User denied transaction"
+  },
+  "userCard": {
+    "label": "Donate 1$"
+  },
+  "multiselectBar": {
+    "title": "{{0}} Profiles selected",
+    "donate": "Donate"
   }
 }

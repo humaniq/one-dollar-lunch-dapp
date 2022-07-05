@@ -17,3 +17,44 @@
     background-color: $blue-primary
   &.MuiButton-textPrimary
     color: $blue-primary
+
+.MuiPaper-root
+  background-color: $white-snow !important
+  border-radius: 16px !important
+  .MuiAccordionSummary-root
+    .MuiAccordionSummary-content
+      padding-left: 0
+      padding-right: 0
+      background-color: $white-snow
+
+.MuiTabs-root
+  .MuiTabs-scroller
+    .MuiTabs-flexContainer
+      border-bottom: solid 1px rgba(0, 24, 51, 0.1)
+      display: flex
+      justify-content: space-around
+      .MuiButtonBase-root
+        flex: 1
+        font-style: normal
+        font-weight: 400
+        font-size: 14px
+        line-height: 16px
+        text-align: center
+        letter-spacing: 0.5px
+        color: $grey-text
+        text-transform: none
+        align-self: flex-end
+        margin-bottom: 0
+        padding-bottom: 0
+        &.Mui-selected
+          color: $blue-ocean
+    .MuiTabs-indicator
+      background-color: $blue-ocean
+      height: 2px
+
+.MuiFormControlLabel-root
+  flex: 1
+  flex-direction: row-reverse
+  justify-content: space-between
+  margin-left: 0
+  margin-right: 0

@@ -1,0 +1,71 @@
+@import "src/styles/vars"
+
+.users
+  display: flex
+  flex-direction: row
+  flex: 1
+  flex-wrap: wrap
+  margin-top: 14px
+
+.user-item-container
+  position: relative
+  display: flex
+  flex: 0.5
+  min-width: 50%
+
+.user-item
+  position: relative
+  display: flex
+  flex: 1 1
+  min-width: 50%
+  flex-direction: column
+  background-color: $white-snow
+  border-radius: 14px
+  padding: 8px
+  margin: 8px 8px 12px
+  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16)
+  justify-content: space-between
+  .image
+    border-radius: 14px 14px 0 0
+    height: 98px
+    object-fit: cover
+  .title
+    font-style: normal
+    font-weight: 500
+    margin-top: 8px
+    font-size: 13px
+    line-height: 16px
+    display: flex
+    align-items: center
+    letter-spacing: 0.5px
+    color: $blue-ocean
+  .description
+    font-style: normal
+    font-weight: 400
+    margin-top: 4px
+    font-size: 13px
+    line-height: 16px
+    display: flex
+    align-items: center
+    letter-spacing: 0.5px
+    color: $grey-text
+    flex: none
+  .button
+    background-color: $primary-light
+    color: $blue-primary
+    margin-top: 8px
+    padding: 10px
+    border: none
+    border-radius: 12px
+    font-style: normal
+    font-weight: 500
+    font-size: 14px
+    line-height: 16px
+    text-align: center
+    letter-spacing: 0.5px
+    &:hover
+      background-color: $blue-primary
+      color: $white-snow
+    &.disabled
+      background-color: $primary-light
+      color: $blue-primary

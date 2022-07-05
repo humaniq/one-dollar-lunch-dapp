@@ -9,6 +9,7 @@ const colors = {
   white: "#FFFFFF",
   grey: "#E0E0E0",
   greyLight: "#F2F3F6",
-}
+  greenMile: "#4CAF50",
+};
 
-export default colors
+export default colors;

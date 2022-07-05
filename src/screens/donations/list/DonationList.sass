@@ -1,0 +1,130 @@
+@import "src/styles/vars"
+
+.donation-list-container
+  display: flex
+  flex-direction: column
+  margin-top: 20px
+  margin-left: 16px
+  margin-right: 16px
+  width: 100%
+  .title
+    font-style: normal
+    font-weight: 500
+    font-size: 16px
+    line-height: 22px
+    display: flex
+    align-items: center
+    color: $blue-ocean
+  .statuses
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    margin-top: 12px
+
+.donation-list
+  margin-top: 12px
+  background-color: $white-snow
+  border-radius: 12px
+
+.donation-item
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding: 8px
+  border-bottom-style: solid
+  border-bottom-color: $grey-divider
+  border-bottom-width: 0.5px
+  &:nth-last-child(1)
+    border-bottom: none
+  .avatar
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 36px
+    height: 36px
+    background-color: rgba($green-mile, 0.07)
+    border-radius: 36px
+  .row
+    display: flex
+    flex-direction: column
+    flex: 1
+    margin-left: 12px
+    .first
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      margin-bottom: 2px
+      .title
+        font-style: normal
+        font-weight: 400
+        font-size: 16px
+        line-height: 22px
+    .second
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      margin-top: 2px
+      .title
+        font-style: normal
+        font-weight: 400
+        font-size: 14px
+        line-height: 18px
+        display: flex
+        align-items: center
+        letter-spacing: 0.5px
+        color: $grey-text
+      .sub
+        font-style: normal
+        font-weight: 400
+        font-size: 14px
+        line-height: 18px
+        letter-spacing: 0.5px
+        color: $orange-warning
+
+.status
+  display: flex
+  flex-direction: row
+  align-items: center
+  border-radius: 16px
+  flex: 1
+  padding: 4px 8px
+  &.first
+    background-color: rgba(155, 155, 155, 0.07)
+  &.second
+    background-color: rgba(253, 153, 0, 0.07)
+  &:nth-child(1)
+    margin-right: 4px
+  &:nth-child(2)
+    margin-left: 4px
+  .counter
+    width: 30px
+    height: 30px
+    border-radius: 30px
+    font-style: normal
+    font-weight: 500
+    font-size: 14px
+    line-height: 16px
+    display: flex
+    align-items: center
+    text-align: center
+    justify-content: center
+    letter-spacing: 0.5px
+    background-color: #C09853
+    &.first
+      background-color: rgba(155, 155, 155, 0.14)
+      color: $grey-text
+    &.second
+      background-color: rgba(253, 153, 0, 0.14)
+      color: $orange-warning
+  .title
+    font-style: normal
+    font-weight: 400
+    font-size: 13px
+    line-height: 16px
+    display: flex
+    align-items: center
+    letter-spacing: 0.5px
+    margin-left: 4px

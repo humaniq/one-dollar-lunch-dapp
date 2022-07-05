@@ -1,0 +1,186 @@
+@import "src/styles/vars"
+
+.transaction
+  display: flex
+  flex-direction: column
+  padding-top: 16px
+  padding-left: 20px
+  padding-right: 20px
+  background-color: $blue-ozone
+  .card-title
+    font-size: 16px
+    font-weight: 500
+    padding-top: 16px
+  .top-component
+    align-items: center
+    display: flex
+    flex-direction: row
+    margin-bottom: 8px
+    margin-top: 20px
+    background-color: $white-snow
+    border-radius: 12px
+    box-shadow: 1px 3px 1px $grey-divider
+    &.col
+      flex-direction: column
+      align-items: normal
+    .avatar-wallet
+      margin-left: 12px
+      width: 44px
+      height: 44px
+      background-color: $grey-bg
+      .avatar-wallet-image
+        width: 22px
+        height: 22px
+    .avatar
+      margin-left: 12px
+      width: 44px
+      height: 44px
+    .divider
+      border-top: 1px solid $grey-divider
+      display: flex
+      align-self: end
+      width: 97%
+    .content
+      display: flex
+      flex: 1
+      flex-direction: column
+      justify-content: space-around
+      border-radius: 12px
+      padding: 12px 10px
+    .col
+      display: flex
+      flex-direction: column
+      align-items: end
+      .title
+        margin-bottom: 5px
+    .title-row
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      margin-bottom: 5px
+      &.center
+        align-items: center
+        margin-bottom: 0
+      .title
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        letter-spacing: 0.5px
+        color: $black-diamond
+    .description-row
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      margin-top: 5px
+      .description
+        font-style: normal
+        font-weight: 400
+        font-size: 14px
+        letter-spacing: 0.5px
+        color: $grey-text
+  .fee
+    font-size: 1.2em
+    font-weight: 500
+    font-style: normal
+    letter-spacing: 0.5px
+    color: $blue-primary
+    background-color: transparent
+    padding-left: 8px
+    padding-right: 8px
+    margin-top: 20px
+    margin-bottom: 20px
+    align-self: center
+
+.header-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start
+  .flex
+    margin-top: 16px
+    display: flex
+    flex: 1 1
+    justify-content: center
+    span
+      font-size: 16px
+      font-weight: 500
+  .title
+    font-weight: 500
+    font-size: 1.5em
+    color: $blue-ocean
+    margin-left: 2.3em
+
+.input-container
+  display: flex
+  flex-direction: column
+  margin-top: 30px
+  .top-title
+    font-style: normal
+    font-weight: 500
+    font-size: 1.3em
+    color: $black-diamond
+    letter-spacing: 0.5px
+    align-self: center
+  .bottom-title
+    font-style: normal
+    font-weight: 500
+    font-size: 1.3em
+    color: $black-diamond
+    letter-spacing: 0.5px
+    align-self: center
+  .middle
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    margin-top: 4px
+    margin-bottom: 8px
+    .input
+      margin-left: 22px
+      margin-right: 22px
+      background-color: transparent
+      flex-grow: 0
+      font-style: normal
+      font-weight: 700
+      font-size: 40px
+      align-self: center
+      text-align: center
+      letter-spacing: 0.5px
+      border: none
+      min-width: 60px !important
+      max-width: 220px
+      &::placeholder
+        color: $grey-text
+      &:focus
+        outline: none!important
+    .icon-container
+      display: flex
+      background-color: $white-snow
+      border-radius: 100px
+      width: 50px
+      height: 50px
+      align-items: center
+      justify-content: center
+      box-shadow: 1px 3px 1px $grey-divider
+      &:hover
+        background-color: $primary-light
+
+.donate-button
+  border: none
+  background-color: $blue-primary
+  color: $white-snow
+  font-style: normal
+  font-weight: 500
+  font-size: 16px
+  letter-spacing: 0.5px
+  padding: 12px
+  border-radius: 12px
+  margin-top: 20px
+  margin-bottom: 30px
+  &:hover
+    background-color: rgba($blue-primary, 0.7)
+  &:disabled
+    background-color: $grey-divider
+    pointer-events: none
+.later-button
+  margin-top: 16px !important
