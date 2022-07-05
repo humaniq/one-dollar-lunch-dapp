@@ -20,7 +20,7 @@ export enum EVM_NETWORKS_NAMES {
   RINKEBY = "rinkeby",
   GOERLI = "goerli",
   BSC = "bsc",
-  BSC_TESTNET = "bcs testnet",
+  BSC_TESTNET = "bsc testnet",
 }
 
 export enum NETWORK_TYPE {
