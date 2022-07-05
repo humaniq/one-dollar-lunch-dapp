@@ -8,6 +8,7 @@
   margin-top: 14px
 
 .user-item-container
+  position: relative
   display: flex
   flex: 0.5
   min-width: 50%
@@ -23,6 +24,7 @@
   padding: 8px
   margin: 8px 8px 12px
   box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16)
+  justify-content: space-between
   .image
     border-radius: 14px 14px 0 0
     height: 98px
@@ -64,3 +66,6 @@
     &:hover
       background-color: $blue-primary
       color: $white-snow
+    &.disabled
+      background-color: $primary-light
+      color: $blue-primary

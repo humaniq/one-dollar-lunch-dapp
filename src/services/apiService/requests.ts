@@ -40,8 +40,13 @@ export type User = {
   photoURI: string;
   createdAt: string;
   updatedAt: string;
+  wallet?: string;
 };
 
 export type GetUsersResponse = {
   payload: Array<User>;
+};
+
+export type GetCoinCostResponse = {
+  payload: { [key: string]: { [key: string]: { [key: string]: any } } };
 };

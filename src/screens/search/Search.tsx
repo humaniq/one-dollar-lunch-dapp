@@ -36,7 +36,7 @@ const SearchImpl: React.FC<SearchScreenInterface> = ({ store: view }) => {
           placeholder={t("search.hint")}
         />
       </div>
-      <AllUsers disableProgress={true} />
+      <AllUsers onClick={view.onClickUser} disableProgress={true} />
     </div>
   );
 };
