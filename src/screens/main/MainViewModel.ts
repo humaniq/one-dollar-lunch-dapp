@@ -1,5 +1,5 @@
 import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
-import { getProviderStore } from "App";
+import { getProviderStore, transactionStore } from "App";
 import { UsersStore } from "../../stores/usersStore/usersStore";
 import { app } from "../../stores/appStore/appStore";
 import { NavigateFunction } from "react-router-dom";
@@ -19,7 +19,6 @@ export enum ORDER {
 }
 
 export class MainViewModel {
-  transactionDialogVisible = false;
   filterVisible = false;
   selectedTabIndex = 0;
   sort: SORT;
@@ -105,10 +104,6 @@ export class MainViewModel {
     return this.selectedTabIndex === 1;
   }
 
-  setTransactionDialogVisibility = (visibility: boolean) => {
-    this.transactionDialogVisible = visibility;
-  };
-
   setFilterVisibility = (visibility: boolean) => {
     this.filterVisible = visibility;
   };
@@ -125,12 +120,29 @@ export class MainViewModel {
     }
   };
 
-  onCardClick = (type?: DONATION_CLICK_TYPE) => {
+  onCardClick = (type?: DONATION_CLICK_TYPE, userId?: string) => {
     if (type === DONATION_CLICK_TYPE.DEFAULT) {
+      UsersStore.selectedUsers.clear();
+      userId && UsersStore.selectedUsers.add(userId);
       this.navigate(routes.donations.path);
     } else if (type === DONATION_CLICK_TYPE.DONATE_RANDOMLY) {
+      UsersStore.selectedUsers.clear();
+      transactionStore.setTransactionDialogVisibility(true);
     } else {
-      this.navigate(routes.profiles.path);
+      UsersStore.multiselectMode = !UsersStore.multiselectMode;
+      if (!UsersStore.multiselectMode) {
+        UsersStore.selectedUsers.clear();
+      }
+    }
+  };
+
+  onClickCard = (userId?: string) => {
+    if (UsersStore.multiselectMode) {
+      userId && UsersStore.selectedUsers.add(userId);
+    } else {
+      UsersStore.selectedUsers.clear();
+      userId && UsersStore.selectedUsers.add(userId);
+      transactionStore.setTransactionDialogVisibility(true);
     }
   };
 

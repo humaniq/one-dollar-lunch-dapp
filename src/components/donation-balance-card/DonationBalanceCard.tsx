@@ -26,7 +26,7 @@ export const DonationBalanceCard: React.FC<CryptoCardProps> = observer(
       >
         <div className={"donation-card"}>
           <div className="balance-container">
-            <div className={"title"}>$0.00</div>
+            <div className={"title"}>{0.0}</div>
             <div className={"sub-title"}>{t("main.yourDonations")}</div>
           </div>
           <img className={"lunch"} src={Lunch} />

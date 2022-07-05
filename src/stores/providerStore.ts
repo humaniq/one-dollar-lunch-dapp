@@ -1,9 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import Logcat from "../utils/logcat";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { rpc } from "../constants/api";
-import { getProviderStore } from "../App";
+import { API_FINANCE, FINANCE_ROUTES, rpc } from "../constants/api";
+import { getProviderStore, transactionStore } from "../App";
 import { EVM_NETWORKS, EVM_NETWORKS_NAMES } from "constants/network";
+import { ethers, Signer } from "ethers";
+import { ApiService } from "../services/apiService/apiService";
+import { GetCoinCostResponse } from "../services/apiService/requests";
+import { beautifyNumber, preciseRound } from "../utils/number";
+import { CURRENCIES } from "../constants/general";
 
 export enum PROVIDERS {
   WEB3 = "WEB3",
@@ -14,12 +19,15 @@ export class ProviderStore {
   initialized = false;
   currentAccount: any = null;
   hasProvider = false;
-  currentProvider: any;
+  currentProvider: any; // ethers.providers.Web3Provider | WalletConnectProvider
   chainId: number;
   connectDialog = false;
   disconnectDialog = false;
   connectedProvider: PROVIDERS;
   currentNetworkName = EVM_NETWORKS_NAMES.BSC_TESTNET;
+  signer: Signer;
+  balance: string;
+  nativePrice: number;
 
   constructor() {
     makeAutoObservable(this, undefined, { autoBind: true });
@@ -44,12 +52,14 @@ export class ProviderStore {
           const provider = new WalletConnectProvider({ rpc });
           const result = await provider.enable();
           this.currentAccount = result[0];
-          this.currentProvider = provider;
+          this.currentProvider = new ethers.providers.Web3Provider(provider);
           await this.initProvider();
           break;
         case PROVIDERS.WEB3:
         default:
-          this.currentProvider = window.ethereum;
+          this.currentProvider = new ethers.providers.Web3Provider(
+            window.ethereum
+          );
           await this.initProvider();
           await this.connectToWeb3();
       }
@@ -63,26 +73,39 @@ export class ProviderStore {
 
   initProvider = async () => {
     if (!this.currentProvider) return;
-    this.currentProvider.on("accountsChanged", (accounts: any) => {
+
+    const { provider: ethereum } = this.currentProvider;
+
+    ethereum.removeAllListeners();
+
+    ethereum.on("accountsChanged", async (accounts: any) => {
+      console.log(accounts, this.currentAccount);
       this.currentAccount = accounts[0];
+      await this.updateBalances();
+      await transactionStore.init();
     });
 
-    this.currentProvider.on("disconnect", () => {
-      Logcat.info("disconnect");
+    ethereum.on("disconnect", () => {
+      console.info("disconnect");
       this.currentAccount = null;
+      this.balance = "";
     });
 
-    this.currentProvider.on("connect", (accounts: any) => {
-      this.currentAccount = accounts[0];
+    ethereum.on("connect", async (info: any) => {
+      if (parseInt(info.chainId, 16) === this.currentNetwork.chainID) return;
+      await this.init();
+      await transactionStore.init();
     });
 
-    this.currentProvider.on("chainChanged", (chainId: number) => {
-      Logcat.log({ chainId });
-      this.chainId = chainId;
+    ethereum.on("chainChanged", async (chainId: string) => {
+      if (parseInt(chainId, 16) === this.currentNetwork.chainID) return;
+      this.chainId = parseInt(chainId, 16);
+      await this.init();
+      await transactionStore.init();
     });
 
-    this.currentProvider.on("message", (payload: any) => {
-      Logcat.info("message", payload);
+    ethereum.on("message", (payload: any) => {
+      console.info("message", payload);
     });
   };
 
@@ -91,12 +114,66 @@ export class ProviderStore {
     const provider = localStorage.getItem("connected");
     if (provider) {
       await this.setProvider(provider as PROVIDERS);
+      await this.updateBalances();
     }
   };
 
+  updateBalances = async () => {
+    this.signer = this.currentProvider.getSigner();
+    this.balance = (await this.signer.getBalance()).toString();
+    await this.getFiatBalances();
+  };
+
+  getFiatBalances = async () => {
+    const api = new ApiService();
+    api.init(API_FINANCE);
+    const result = await api.get<GetCoinCostResponse>(
+      FINANCE_ROUTES.GET_PRICES,
+      {},
+      {
+        params: {
+          symbol: `${getProviderStore.currentNetwork.nativeSymbol}`,
+          currency: "usd",
+        },
+      }
+    );
+    if (result.isOk) {
+      this.nativePrice =
+        result.data.payload[getProviderStore.currentNetwork.nativeSymbol][
+          "usd"
+        ].price;
+    }
+  };
+
+  get valBalance() {
+    return this.balance
+      ? preciseRound(
+          +ethers.utils.formatEther(
+            ethers.BigNumber.from(this.balance.toString())
+          )
+        )
+      : 0;
+  }
+
+  get fiatBalance() {
+    try {
+      return this.nativePrice
+        ? preciseRound(this.nativePrice * this.valBalance)
+        : 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  get formatFiatBalance() {
+    return this.fiatBalance
+      ? `${beautifyNumber(+this.fiatBalance, CURRENCIES.USD)}`
+      : `--/--`;
+  }
+
   connectToWeb3 = async () => {
     try {
-      const accounts = await this.currentProvider.request({
+      const accounts = await this.currentProvider.provider.request({
         method: "eth_requestAccounts",
       });
       this.currentAccount = accounts[0];
@@ -108,7 +185,7 @@ export class ProviderStore {
   personalMessageRequest = (message: any): any => {
     if (!this.currentProvider) return null;
 
-    return this.currentProvider.request({
+    return this.currentProvider.provider.request({
       method: "personal_sign",
       params: [
         `0x${Buffer.from(message, "utf-8").toString("hex")}`,
@@ -118,9 +195,10 @@ export class ProviderStore {
   };
 
   connect = async () => {
-    if (!this.currentProvider || this.currentProvider?.currentAccount) return;
+    if (!this.currentProvider || this.currentProvider?.provider.currentAccount)
+      return;
     try {
-      const accounts = await this.currentProvider.request({
+      const accounts = await this.currentProvider.provider.request({
         method: "eth_requestAccounts",
       });
       this.currentAccount = accounts[0];
@@ -145,5 +223,3 @@ export class ProviderStore {
     this.disconnectDialog = !this.disconnectDialog;
   };
 }
-
-export const ETHProvider = new ProviderStore();

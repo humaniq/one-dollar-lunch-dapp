@@ -15,8 +15,12 @@ export enum NATIVE_COIN_SYMBOL {
 }
 
 export enum EVM_NETWORKS_NAMES {
+  MAINNET = "mainnet",
+  ROPSTEN = "ropsten",
+  RINKEBY = "rinkeby",
+  GOERLI = "goerli",
   BSC = "bsc",
-  BSC_TESTNET = "bsc testnet",
+  BSC_TESTNET = "bcs testnet",
 }
 
 export enum NETWORK_TYPE {

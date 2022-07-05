@@ -7,6 +7,10 @@
   padding-left: 20px
   padding-right: 20px
   background-color: $blue-ozone
+  .card-title
+    font-size: 16px
+    font-weight: 500
+    padding-top: 16px
   .top-component
     align-items: center
     display: flex
@@ -16,10 +20,26 @@
     background-color: $white-snow
     border-radius: 12px
     box-shadow: 1px 3px 1px $grey-divider
+    &.col
+      flex-direction: column
+      align-items: normal
+    .avatar-wallet
+      margin-left: 12px
+      width: 44px
+      height: 44px
+      background-color: $grey-bg
+      .avatar-wallet-image
+        width: 22px
+        height: 22px
     .avatar
       margin-left: 12px
       width: 44px
       height: 44px
+    .divider
+      border-top: 1px solid $grey-divider
+      display: flex
+      align-self: end
+      width: 97%
     .content
       display: flex
       flex: 1
@@ -27,11 +47,20 @@
       justify-content: space-around
       border-radius: 12px
       padding: 12px 10px
+    .col
+      display: flex
+      flex-direction: column
+      align-items: end
+      .title
+        margin-bottom: 5px
     .title-row
       display: flex
       flex-direction: row
       justify-content: space-between
       margin-bottom: 5px
+      &.center
+        align-items: center
+        margin-bottom: 0
       .title
         font-style: normal
         font-weight: 500
@@ -67,6 +96,14 @@
   flex-direction: row
   align-items: center
   justify-content: flex-start
+  .flex
+    margin-top: 16px
+    display: flex
+    flex: 1 1
+    justify-content: center
+    span
+      font-size: 16px
+      font-weight: 500
   .title
     font-weight: 500
     font-size: 1.5em
@@ -145,3 +182,5 @@
   &:disabled
     background-color: $grey-divider
     pointer-events: none
+.later-button
+  margin-top: 16px !important

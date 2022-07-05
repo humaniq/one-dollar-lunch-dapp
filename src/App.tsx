@@ -5,7 +5,7 @@ import routes from "./utils/routes";
 import NotFound from "./screens/404/404";
 import b from "buffer";
 import { observer } from "mobx-react";
-import { ETHProvider } from "stores/providerStore";
+import { ProviderStore } from "stores/providerStore";
 import { AlertProps, Snackbar } from "@mui/material";
 import { app } from "stores/appStore/appStore";
 import MuiAlert from "@mui/material/Alert";
@@ -15,10 +15,14 @@ import { Donations } from "screens/donations/Donations";
 import { DonationDetails } from "screens/donation-details/DonationDetails";
 import { Portfolio } from "screens/portfolio/Portfolio";
 import { Profiles } from "screens/profiles/Profiles";
+import { TransactionDialog } from "./components/transaction-dialog/TransactionDialog";
+import { Transaction } from "./stores/transaction/transactionStore";
+import { TransactionMessage } from "./components/transaction-message/TransactionMessage";
 
 window.Buffer = b.Buffer;
 
-export const getProviderStore = ETHProvider;
+export const getProviderStore = new ProviderStore();
+export const transactionStore = new Transaction();
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -39,6 +43,7 @@ export const App = observer(() => {
   useEffect(() => {
     (async () => {
       await getProviderStore.init();
+      // await transactionStore.init()
     })();
   }, []);
 
@@ -61,6 +66,15 @@ export const App = observer(() => {
             </Routes>
           </Router>
         ) : null}
+        <TransactionDialog
+          onClose={() => transactionStore.setTransactionDialogVisibility(false)}
+          visible={transactionStore.transactionDialogVisible}
+        />
+        <TransactionMessage
+          isOpen={transactionStore.transactionMessageVisible}
+          status={transactionStore.transactionMessageStatus}
+          message={transactionStore.transactionMessage}
+        />
         <Snackbar
           open={app.alert.displayAlert}
           autoHideDuration={6000}

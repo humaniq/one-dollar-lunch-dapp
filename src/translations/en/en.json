@@ -88,6 +88,29 @@
     "hint": "Search users by name / country / city"
   },
   "transaction": {
-    "donate": "Donate {{0}}"
+    "donate": "Donate {{0}}",
+    "fee": "Fee"
+  },
+  "transactionDialog": {
+    "title": "$1 for lunch.com",
+    "howMany": "How many",
+    "amount": "Amount",
+    "suggestedFee": "Suggested fee",
+    "total": "Total",
+    "later": "Maybe later",
+    "allow": "Yes, allow this transaction"
+  },
+  "transactionMessage": {
+    "pending": "Transaction is pending",
+    "success": "Thanks for donation",
+    "error": "Error transaction",
+    "denied": "User denied transaction"
+  },
+  "userCard": {
+    "label": "Donate 1$"
+  },
+  "multiselectBar": {
+    "title": "{{0}} Profiles selected",
+    "donate": "Donate"
   }
 }

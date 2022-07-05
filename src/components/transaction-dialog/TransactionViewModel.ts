@@ -1,32 +1,25 @@
 import { makeAutoObservable } from "mobx";
+import { transactionStore } from "../../App";
 
 export class TransactionViewModel {
-  inputValue = "";
-
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  init = () => {};
-
   get getInputValue() {
-    return this.inputValue;
+    return transactionStore.txData.value;
   }
+
+  get displayConfirmView() {
+    return transactionStore.displayConfirmView;
+  }
+
+  closeDialog = () => {
+    transactionStore.transactionDialogVisible = false;
+    transactionStore.displayConfirmView = false;
+  };
 
   get getInputFontSize() {
     return this.getInputValue.length < 8 ? "50px" : "32px";
   }
-
-  setInputValue = (value: string) => {
-    if (!/^([0-9]+)?(\.)?([0-9]+)?$/.test(value)) {
-      return;
-    }
-
-    if (this.inputValue.length === 0 && value === ".") {
-      this.inputValue = "0.";
-      return;
-    }
-
-    this.inputValue = value;
-  };
 }

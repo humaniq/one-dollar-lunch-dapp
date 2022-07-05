@@ -50,4 +50,6 @@ export class SearchViewModel {
   onSearch = (val: any) => {
     this.search = val.target.value;
   };
+
+  onClickUser = (id: string) => {};
 }
