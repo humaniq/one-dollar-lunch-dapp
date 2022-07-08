@@ -1,7 +1,7 @@
 import { makeAutoObservable, toJS } from "mobx";
-import { HUMANIQ_ROUTES } from "../../constants/api";
-import { BaseList } from "../../utils/baseList";
-import { GetUsersRequest, User } from "../../services/apiService/requests";
+import { HUMANIQ_ROUTES } from "../constants/api";
+import { BaseList } from "../utils/baseList";
+import { GetUsersRequest, User } from "../services/apiService/requests";
 
 export enum TYPE_REQUEST {
   HOT_REQUEST = "HOT_REQUEST",

@@ -13,7 +13,7 @@ import routes from "utils/routes";
 
 interface DonationDetailsInterface {}
 
-const DonationDetailsImpl: React.FC<DonationDetailsInterface> = ({}) => {
+const DonationDetailsImpl: React.FC<DonationDetailsInterface> = () => {
   const navigate = useNavigate();
 
   const onBackClick = useCallback(() => {
@@ -50,7 +50,7 @@ const DonationDetailsImpl: React.FC<DonationDetailsInterface> = ({}) => {
       </div>
       <div className="image-details-wait">
         <div className="first">
-          <img className={"soup"} src={DonationSoup} />
+          <img alt={"soup"} className={"soup"} src={DonationSoup} />
         </div>
         <div className="second">
           <span className="title">Waiting for report</span>

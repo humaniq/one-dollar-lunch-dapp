@@ -3,6 +3,9 @@ import "./styles.sass";
 import Lunch from "../../static/images/main-card-image.svg";
 import { observer } from "mobx-react";
 import { t } from "i18next";
+import { DonationsStore } from "../../App";
+import { currencyFormat } from "../../utils/number";
+import { CURRENCIES } from "../../constants/general";
 
 export enum DONATION_CLICK_TYPE {
   DEFAULT,
@@ -26,10 +29,12 @@ export const DonationBalanceCard: React.FC<CryptoCardProps> = observer(
       >
         <div className={"donation-card"}>
           <div className="balance-container">
-            <div className={"title"}>{0.0}</div>
+            <div className={"title"}>
+              {currencyFormat(DonationsStore.totalFiat, CURRENCIES.USD)}
+            </div>
             <div className={"sub-title"}>{t("main.yourDonations")}</div>
           </div>
-          <img className={"lunch"} src={Lunch} />
+          <img alt={"lunch"} className={"lunch"} src={Lunch} />
           <div className="buttons-container">
             <button
               onClick={(event) => {

@@ -50,3 +50,22 @@ export type GetUsersResponse = {
 export type GetCoinCostResponse = {
   payload: { [key: string]: { [key: string]: { [key: string]: any } } };
 };
+
+export type Donation = {
+  senderAddress: string;
+  receiverAddress: string;
+  symbol: string;
+  amount: number;
+  timeStamp: string;
+};
+
+export type GetDonationsRequest = {
+  group_order: string;
+  page_index: number;
+  page_size: number;
+};
+
+export type UserDonation = {
+  receiver: User;
+  donation: Donation;
+};

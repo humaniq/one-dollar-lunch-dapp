@@ -1,6 +1,6 @@
 import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { getProviderStore, transactionStore } from "App";
-import { UsersStore } from "../../stores/usersStore/usersStore";
+import { UsersStore } from "../../stores/usersStore";
 import { app } from "../../stores/appStore/appStore";
 import { NavigateFunction } from "react-router-dom";
 import { DONATION_CLICK_TYPE } from "../../components/donation-balance-card/DonationBalanceCard";

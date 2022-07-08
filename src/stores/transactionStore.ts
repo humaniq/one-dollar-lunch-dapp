@@ -1,17 +1,17 @@
 import { makeAutoObservable, reaction } from "mobx";
-import { Donation } from "../../models/contracts/Donation";
+import { Donation } from "../models/contracts/Donation";
 import { BigNumber, ethers } from "ethers";
-import { getProviderStore } from "../../App";
-import { currencyFormat } from "../../utils/number";
-import { ApiService } from "../../services/apiService/apiService";
+import { getProviderStore } from "../App";
+import { currencyFormat } from "../utils/number";
+import { ApiService } from "../services/apiService/apiService";
 import {
   API_HUMANIQ_TOKEN,
   API_HUMANIQ_URL,
   HUMANIQ_ROUTES,
-} from "../../constants/api";
-import { GetUsersResponse } from "../../services/apiService/requests";
-import { UsersStore } from "../usersStore/usersStore";
-import { TRANSACTION_STATUS } from "../../components/transaction-message/TransactionMessage";
+} from "../constants/api";
+import { GetUsersResponse } from "../services/apiService/requests";
+import { UsersStore } from "./usersStore";
+import { TRANSACTION_STATUS } from "../components/transaction-message/TransactionMessage";
 import { t } from "i18next";
 
 export class Transaction {
