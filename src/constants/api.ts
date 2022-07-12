@@ -1,4 +1,4 @@
-export const API_HUMANIQ_URL = "https://signupbot.dev.humaniq.com/api/v1";
+export const API_HUMANIQ_URL = process.env.REACT_APP_API_HUMANIQ_URL || "";
 export const API_FINANCE = "https://apifinance.humaniq.com/api/v1";
 export const API_HUMANIQ_TOKEN = "XMaLhU75ZFklvAiV7yBZBNnlWsE9IowU";
 

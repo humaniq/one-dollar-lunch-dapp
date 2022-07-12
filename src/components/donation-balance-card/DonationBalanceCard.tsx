@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.sass";
 import Lunch from "../../static/images/main-card-image.svg";
+import Soup from "../../static/images/soup.svg";
 import { observer } from "mobx-react";
 import { t } from "i18next";
 import { DonationsStore } from "../../App";
@@ -34,7 +35,7 @@ export const DonationBalanceCard: React.FC<CryptoCardProps> = observer(
             </div>
             <div className={"sub-title"}>{t("main.yourDonations")}</div>
           </div>
-          <img alt={"lunch"} className={"lunch"} src={Lunch} />
+          <img alt={"lunch"} className={"lunch"} src={Soup} />
           <div className="buttons-container">
             <button
               onClick={(event) => {

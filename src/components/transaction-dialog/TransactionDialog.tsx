@@ -203,6 +203,10 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
               transactionStore.transactionFiatFee,
               "usd"
             )}`}</span>
+            <span className={"users-counter-title"}>
+              {" "}
+              {transactionStore.donationCountPeopleTittle}
+            </span>
             <button
               onClick={() => (transactionStore.displayConfirmView = true)}
               className="donate-button"

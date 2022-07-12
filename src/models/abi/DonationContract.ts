@@ -1,7 +1,8 @@
 import { ethers, providers, Signer } from "ethers";
 
 export const contractDonateAddress =
-  "0xA2C3b73515730b690e21bFDE8A148bb858c8dfF8";
+  process.env.REACT_APP_CONTRACT_DONATE_ADDRESS || "";
+
 export const contractAbiDonate = [
   {
     anonymous: false,
