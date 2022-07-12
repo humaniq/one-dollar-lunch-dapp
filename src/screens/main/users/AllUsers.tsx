@@ -1,6 +1,6 @@
 import React from "react";
 import "./AllUsers.sass";
-import { UsersStore } from "../../../stores/usersStore/usersStore";
+import { UsersStore } from "../../../stores/usersStore";
 import { observer } from "mobx-react";
 import { User } from "../../../services/apiService/requests";
 import { CircularProgress } from "@mui/material";
@@ -23,7 +23,7 @@ const UserItem: React.FC<AllUserItemProps> = ({
   return (
     <div className="user-item-container">
       <div className="user-item">
-        <img className="image" src={user.photoURI} alt="request-image" />
+        <img className="image" src={user.photoURI} alt="request" />
         <span className="title">{`${user.firstName} ${user.lastName}`}</span>
         <span className="description">{`${user.country} , ${user.city}`}</span>
         <button

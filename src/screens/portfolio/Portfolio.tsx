@@ -37,7 +37,11 @@ const PortfolioImpl = () => {
       <div className="top-info-container">
         <div className="top-info">
           <div className="first">
-            <img className="image" src="https://picsum.photos/200/300" />
+            <img
+              alt="portfolio"
+              className="image"
+              src="https://picsum.photos/200/300"
+            />
           </div>
           <div className="second">
             <span className="title">Daudi Nelson</span>

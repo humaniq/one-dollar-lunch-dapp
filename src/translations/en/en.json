@@ -98,7 +98,12 @@
     "suggestedFee": "Suggested fee",
     "total": "Total",
     "later": "Maybe later",
-    "allow": "Yes, allow this transaction"
+    "allow": "Yes, allow this transaction",
+    "randomlyLaunch": "1 launch for 1 randomly people",
+    "randomlyLaunches": "{{0}} launches for {{0}} randomly people",
+    "chosenLaunchOne": "1 launch for {{0}}",
+    "chosenLaunches": "Launches for {{0}} chosen",
+    "and": "and"
   },
   "transactionMessage": {
     "pending": "Transaction is pending",

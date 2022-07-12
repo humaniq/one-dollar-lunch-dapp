@@ -1,6 +1,6 @@
 import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { NavigateFunction } from "react-router-dom";
-import { UsersStore } from "../../stores/usersStore/usersStore";
+import { UsersStore } from "../../stores/usersStore";
 import { app } from "../../stores/appStore/appStore";
 
 export class SearchViewModel {

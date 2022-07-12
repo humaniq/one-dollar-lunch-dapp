@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./Donations.sass";
 import { withStore } from "utils/hoc";
 import { DonationsViewModel } from "screens/donations/DonationsViewModel";
@@ -6,11 +6,13 @@ import { observer } from "mobx-react";
 import { IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { t } from "i18next";
-import SearchIllustration from "../../static/images/illustation_search.svg";
 import { DonationList } from "screens/donations/list/DonationList";
 import { useNavigate } from "react-router-dom";
 import routes from "utils/routes";
 import colors from "utils/colors";
+import { DonationsStore } from "../../App";
+import { currencyFormat } from "../../utils/number";
+import { CURRENCIES } from "../../constants/general";
 
 interface DonationsScreenInterface {
   store: DonationsViewModel;
@@ -18,6 +20,11 @@ interface DonationsScreenInterface {
 
 const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    view.init();
+    return () => view.destroy();
+  });
 
   const onBackClick = useCallback(() => {
     navigate(-1);
@@ -40,7 +47,9 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         <ArrowBackIcon sx={{ fontSize: 28, color: colors.blueOcean }} />
       </IconButton>
       <div className="donations-balance-container">
-        <div className={"title"}>$0.00</div>
+        <div className={"title"}>
+          {currencyFormat(DonationsStore.totalFiat, CURRENCIES.USD)}
+        </div>
         <div className={"sub-title"}>{t("main.yourDonations")}</div>
       </div>
       <div className="content">

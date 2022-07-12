@@ -21,7 +21,7 @@ const SearchImpl: React.FC<SearchScreenInterface> = ({ store: view }) => {
     return () => {
       view.destroy();
     };
-  }, []);
+  }, [view, navigate]);
 
   return (
     <div className="search-container">
