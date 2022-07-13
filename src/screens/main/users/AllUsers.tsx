@@ -6,6 +6,7 @@ import { User } from "../../../services/apiService/requests";
 import { CircularProgress } from "@mui/material";
 import { t } from "i18next";
 import { CheckBox } from "../../../components/check-box/CheckBox";
+import Human from "../../../static/images/human.svg";
 
 interface AllUserItemProps {
   onClick: (id: string) => void;
@@ -23,7 +24,11 @@ const UserItem: React.FC<AllUserItemProps> = ({
   return (
     <div className="user-item-container">
       <div className="user-item">
-        <img className="image" src={user.photoURI} alt="request" />
+        <img
+          className={`image ${!user.photoURI ? "no-image" : ""}`}
+          src={user.photoURI || Human}
+          alt="request"
+        />
         <span className="title">{`${user.firstName} ${user.lastName}`}</span>
         <span className="description">{`${user.country} , ${user.city}`}</span>
         <button
