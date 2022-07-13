@@ -76,7 +76,7 @@ export class ProviderStore {
 
     const { provider: ethereum } = this.currentProvider;
 
-    ethereum.removeAllListeners();
+    ethereum.removeAllListeners && ethereum.removeAllListeners();
 
     ethereum.on("accountsChanged", async (accounts: any) => {
       console.log(accounts, this.currentAccount);
@@ -176,6 +176,7 @@ export class ProviderStore {
       const accounts = await this.currentProvider.provider.request({
         method: "eth_requestAccounts",
       });
+
       this.currentAccount = accounts[0];
     } catch (e) {
       Logcat.info("ERROR", e);
