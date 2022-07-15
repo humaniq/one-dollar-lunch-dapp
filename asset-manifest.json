@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.420d93b4.chunk.css",
-    "main.js": "./static/js/main.637c576e.chunk.js",
-    "main.js.map": "./static/js/main.637c576e.chunk.js.map",
+    "main.css": "./static/css/main.cbd4679b.chunk.css",
+    "main.js": "./static/js/main.4c1aff13.chunk.js",
+    "main.js.map": "./static/js/main.4c1aff13.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.cbaf1268.js",
     "runtime-main.js.map": "./static/js/runtime-main.cbaf1268.js.map",
-    "static/js/2.e75c88b4.chunk.js": "./static/js/2.e75c88b4.chunk.js",
-    "static/js/2.e75c88b4.chunk.js.map": "./static/js/2.e75c88b4.chunk.js.map",
+    "static/js/2.1c146def.chunk.js": "./static/js/2.1c146def.chunk.js",
+    "static/js/2.1c146def.chunk.js.map": "./static/js/2.1c146def.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.420d93b4.chunk.css.map": "./static/css/main.420d93b4.chunk.css.map",
-    "static/js/2.e75c88b4.chunk.js.LICENSE.txt": "./static/js/2.e75c88b4.chunk.js.LICENSE.txt",
+    "static/css/main.cbd4679b.chunk.css.map": "./static/css/main.cbd4679b.chunk.css.map",
+    "static/js/2.1c146def.chunk.js.LICENSE.txt": "./static/js/2.1c146def.chunk.js.LICENSE.txt",
     "static/media/BNB.12f6ca37.png": "./static/media/BNB.12f6ca37.png",
     "static/media/donation-soup.0852f7e6.svg": "./static/media/donation-soup.0852f7e6.svg",
     "static/media/human.10462240.svg": "./static/media/human.10462240.svg",
@@ -19,6 +19,7 @@
     "static/media/ic_filter.eaf5032e.svg": "./static/media/ic_filter.eaf5032e.svg",
     "static/media/ic_max.55acdbd1.svg": "./static/media/ic_max.55acdbd1.svg",
     "static/media/ic_search.6d0afefc.svg": "./static/media/ic_search.6d0afefc.svg",
+    "static/media/metamask-logo.894f5d1c.svg": "./static/media/metamask-logo.894f5d1c.svg",
     "static/media/soup.782c9bf5.svg": "./static/media/soup.782c9bf5.svg",
     "static/media/wallet-connect-logo.6fa61a47.svg": "./static/media/wallet-connect-logo.6fa61a47.svg",
     "static/media/wallet.f1596f01.svg": "./static/media/wallet.f1596f01.svg",
@@ -26,8 +27,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.cbaf1268.js",
-    "static/js/2.e75c88b4.chunk.js",
-    "static/css/main.420d93b4.chunk.css",
-    "static/js/main.637c576e.chunk.js"
+    "static/js/2.1c146def.chunk.js",
+    "static/css/main.cbd4679b.chunk.css",
+    "static/js/main.4c1aff13.chunk.js"
   ]
 }
