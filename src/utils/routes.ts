@@ -12,7 +12,7 @@ const routes = {
     path: "/donationDetails",
   },
   portfolio: {
-    path: "/portfolio",
+    path: "/portfolio/:uid",
   },
   profiles: {
     path: "/profiles",

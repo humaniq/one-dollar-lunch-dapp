@@ -137,6 +137,8 @@ export class MainViewModel {
   };
 
   onClickCard = (userId?: string) => {
+    if (!getProviderStore.currentAccount)
+      return (getProviderStore.connectDialog = !getProviderStore.connectDialog);
     if (UsersStore.multiselectMode) {
       userId && UsersStore.selectedUsers.add(userId);
     } else {

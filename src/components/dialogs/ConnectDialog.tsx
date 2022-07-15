@@ -14,6 +14,7 @@ import { PROVIDERS } from "stores/providerStore";
 import HumaniqLogo from "../../static/images/humaniq-logo.svg";
 import WCLogo from "../../static/images/wallet-connect-logo.svg";
 import Web3Logo from "../../static/images/web3-logo.svg";
+import MetamaskLogo from "../../static/images/metamask-logo.svg";
 import "./styles.sass";
 import { Puller } from "components/puller/Puller";
 
@@ -36,6 +37,16 @@ export const ConnectDialog: React.FC<ConnectDialogProps> = observer(() => {
         <h1 className={"tittle"}>{t("connectWalletDialog")}</h1>
         <div className={"description"}>{t("chooseConnection")}</div>
         <Stack className={"stack"}>
+          <Paper
+            elevation={0}
+            className={"paper"}
+            onClick={() => getProviderStore.setProvider(PROVIDERS.WEB3)}
+          >
+            <Avatar className={"avatar"}>
+              <img alt={"metamask"} src={MetamaskLogo} />
+            </Avatar>
+            <span>{t("metamaskName")}</span>
+          </Paper>
           <Paper
             elevation={0}
             className={"paper"}

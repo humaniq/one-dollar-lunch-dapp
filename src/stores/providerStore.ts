@@ -92,8 +92,10 @@ export class ProviderStore {
     });
 
     ethereum.on("connect", async (info: any) => {
+      console.log("connect");
       if (parseInt(info.chainId, 16) === this.currentNetwork.chainID) return;
-      await this.init();
+      console.log("connect");
+      await this.updateBalances();
       await transactionStore.init();
     });
 
@@ -178,6 +180,7 @@ export class ProviderStore {
       });
 
       this.currentAccount = accounts[0];
+      await this.updateBalances();
     } catch (e) {
       Logcat.info("ERROR", e);
     }
@@ -207,6 +210,7 @@ export class ProviderStore {
       Logcat.info("ERROR", e);
     }
   };
+
   disconnect = () => {
     this.currentAccount = null;
     this.disconnectDialog = false;

@@ -101,6 +101,13 @@ export class Transaction {
       }
     );
 
+    // reaction(()=> getProviderStore.currentAccount, async (val) => {
+    //   if(!val) return
+    //   this.setValueByCountUsers();
+    //   await this.getUsersInfo();
+    //   await this.getTransactionData();
+    // })
+
     reaction(
       () => this.txData.value,
       async (val) => {
