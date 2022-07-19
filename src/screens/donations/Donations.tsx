@@ -30,9 +30,12 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
     navigate(-1);
   }, [navigate]);
 
-  const onDonationItemClick = useCallback(() => {
-    navigate(routes.donationDetails.path);
-  }, [navigate]);
+  const onDonationItemClick = useCallback(
+    (donation) => {
+      navigate(routes.donationDetails.path, { state: { donation } });
+    },
+    [navigate]
+  );
 
   return (
     <div className="donations">
@@ -48,7 +51,7 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
       </IconButton>
       <div className="donations-balance-container">
         <div className={"title"}>
-          {currencyFormat(DonationsStore.totalFiat, CURRENCIES.USD)}
+          {currencyFormat(DonationsStore.total, CURRENCIES.USD)}
         </div>
         <div className={"sub-title"}>{t("main.yourDonations")}</div>
       </div>
@@ -59,7 +62,10 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         {/*    {t("donations.donationsAppear")}*/}
         {/*  </span>*/}
         {/*</div>*/}
-        <DonationList onItemClick={onDonationItemClick} />
+        <DonationList
+          source={DonationsStore}
+          onItemClick={onDonationItemClick}
+        />
       </div>
     </div>
   );

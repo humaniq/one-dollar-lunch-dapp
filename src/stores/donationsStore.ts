@@ -44,7 +44,7 @@ export class Donations {
     await this.donations.fetchList();
   };
 
-  get totalFiat() {
+  get total() {
     return this.donations?.other?.totals?.bnb?.count || 0;
   }
 

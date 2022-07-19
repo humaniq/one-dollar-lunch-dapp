@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./Portfolio.sass";
 import { withStore } from "utils/hoc";
 import { PortfolioViewModel } from "screens/portfolio/PortfolioViewModel";
@@ -6,13 +6,22 @@ import { observer } from "mobx-react";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import colors from "utils/colors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
 import routes from "utils/routes";
 
-const PortfolioImpl = () => {
+interface PortfolioInterface {
+  store: PortfolioViewModel;
+}
+
+const PortfolioImpl: React.FC<PortfolioInterface> = ({ store: view }) => {
   const navigate = useNavigate();
+  const { uid } = useParams();
+  useEffect(() => {
+    view.init(uid);
+    return () => view.destroy();
+  }, []);
 
   const onBackClick = useCallback(() => {
     navigate(-1);
@@ -40,25 +49,25 @@ const PortfolioImpl = () => {
             <img
               alt="portfolio"
               className="image"
-              src="https://picsum.photos/200/300"
+              src={view.profile?.photoURI}
             />
           </div>
           <div className="second">
-            <span className="title">Daudi Nelson</span>
-            <span className="sub">Benin, Cotonou</span>
-            <span className="sub">10 December 1992</span>
-            <span className="sub">Male</span>
-            <span className="sub">Teacher</span>
+            <span className="title">{`${view.profile?.firstName} ${view.profile?.lastName}`}</span>
+            <span className="sub">{`${view.profile?.country}, ${view.profile?.city}`}</span>
+            <span className="sub">{view.profile?.birthDate}</span>
+            {/*<span className="sub">Male</span>*/}
+            {/*<span className="sub">Teacher</span>*/}
           </div>
         </div>
-        <button onClick={() => {}} className="button">
+        <button onClick={() => view.onClickCard(uid)} className="button">
           {t("transaction.donate", {
             0: "$1",
           })}
         </button>
       </div>
       <div className="content">
-        <DonationList onItemClick={onDonationItemClick} />
+        <DonationList source={view} onItemClick={onDonationItemClick} />
       </div>
     </div>
   );

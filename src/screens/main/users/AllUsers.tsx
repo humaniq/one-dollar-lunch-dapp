@@ -28,7 +28,9 @@ const UserItem: React.FC<AllUserItemProps> = ({
     <div className="user-item-container">
       <div className="user-item">
         <img
-          // onClick={ () => navigation(generatePath(routes.portfolio.path, { uid: user.uid })) }
+          onClick={() =>
+            navigation(generatePath(routes.portfolio.path, { uid: user.uid }))
+          }
           className={`image ${!user.photoURI ? "no-image" : ""}`}
           src={user.photoURI || Human}
           alt="request"

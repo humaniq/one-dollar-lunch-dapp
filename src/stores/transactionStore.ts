@@ -59,11 +59,11 @@ export class Transaction {
       );
       if (this.selectedAddresses.length === 1) {
         return t("transactionDialog.chosenLaunchOne", {
-          0: `${user?.firstName} ${user?.lastName}`,
+          0: `${user?.firstName || ""} ${user?.lastName || ""}`,
         });
       } else {
         return `${t("transactionDialog.chosenLaunchOne", {
-          0: `${user?.firstName} ${user?.lastName}`,
+          0: `${user?.firstName || ""} ${user?.lastName || ""}`,
         })} ${t("transactionDialog.and")} ${t(
           "transactionDialog.randomlyLaunches",
           { 0: this.selectedAddresses.length - 1 }

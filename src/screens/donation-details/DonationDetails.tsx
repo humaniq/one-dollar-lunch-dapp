@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import "./DonationDetails.sass";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import colors from "utils/colors";
 import { t } from "i18next";
 import DonationSoup from "../../static/images/donation-soup.svg";

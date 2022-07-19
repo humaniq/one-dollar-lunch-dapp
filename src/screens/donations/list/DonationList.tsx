@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./DonationList.sass";
 import { t } from "i18next";
 import CheckIcon from "@mui/icons-material/Check";
 import colors from "utils/colors";
 import { UserDonation } from "../../../services/apiService/requests";
-import { DonationsStore } from "../../../App";
 import { CircularProgress } from "@mui/material";
 import { observer } from "mobx-react";
 import dayjs from "dayjs";
+import { renderShortAddress } from "../../../utils/address";
 
 interface DonationListProps {
-  onItemClick?: () => void;
+  onItemClick: (item: UserDonation) => void;
+  source?: any;
 }
 
 interface DonationItemProps {
-  onClick?: () => void;
+  onClick: (item: UserDonation) => void;
+  source?: any;
   donation: UserDonation;
 }
 
@@ -33,23 +35,30 @@ const Status = ({ counter = 0, text, appearance = "" }: StatusInterface) => {
   );
 };
 
-const DonationItem = ({ onClick, donation }: DonationItemProps) => {
+const DonationItem = ({ onClick, donation, source }: DonationItemProps) => {
+  const [donationTittle, setTittle] = useState("");
+
+  useEffect(() => {
+    setTittle(
+      donation?.receiver
+        ? `${donation?.receiver?.firstName} ${donation?.receiver?.lastName}`
+        : renderShortAddress(donation?.donation?.senderAddress)
+    );
+  }, [donation, source]);
+
   return (
-    <div className="donation-item">
+    <div className="donation-item" onClick={() => {}}>
       <div className="avatar">
         <CheckIcon sx={{ fontSize: 22, color: colors.greenMile }} />
       </div>
       <div className="row">
         <div className="first">
-          <span className="title">
-            {" "}
-            {`${donation.receiver.firstName} ${donation.receiver.lastName}`}
-          </span>
+          <span className="title"> {donationTittle}</span>
           <span className="title">$1</span>
         </div>
         <div className="second">
           <span className="title">
-            {dayjs(donation.donation.timeStamp).format("MMM DD h:mm A")}
+            {dayjs(donation?.donation?.timeStamp).format("MMM DD h:mm A")}
           </span>
           {/*<span className="sub">Waiting for report</span>*/}
         </div>
@@ -59,12 +68,12 @@ const DonationItem = ({ onClick, donation }: DonationItemProps) => {
 };
 
 export const DonationList: React.FC<DonationListProps> = observer(
-  ({ onItemClick }) => {
+  ({ onItemClick, source }) => {
     return (
       <div className="donation-list-container">
         <span className="title">
           {t("donations.totalDonate", {
-            0: DonationsStore.totalFiat,
+            0: source.total,
           })}
         </span>
         {/*<div className="statuses">*/}
@@ -80,9 +89,9 @@ export const DonationList: React.FC<DonationListProps> = observer(
         {/*  />*/}
         {/*</div>*/}
         <div className="donation-list">
-          {!DonationsStore?.donations?.initialized && <CircularProgress />}
-          {DonationsStore?.donations?.initialized &&
-            DonationsStore.donations.list.map((item, index) => (
+          {!source?.donations?.initialized && <CircularProgress />}
+          {source?.donations?.initialized &&
+            source.donations.list.map((item: UserDonation, index: any) => (
               <DonationItem
                 donation={item}
                 key={`donation_item_${index}`}

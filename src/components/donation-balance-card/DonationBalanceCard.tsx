@@ -31,7 +31,7 @@ export const DonationBalanceCard: React.FC<CryptoCardProps> = observer(
         <div className={"donation-card"}>
           <div className="balance-container">
             <div className={"title"}>
-              {currencyFormat(DonationsStore.totalFiat, CURRENCIES.USD)}
+              {currencyFormat(DonationsStore.total, CURRENCIES.USD)}
             </div>
             <div className={"sub-title"}>{t("main.yourDonations")}</div>
           </div>
