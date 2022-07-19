@@ -6,6 +6,7 @@ export const HUMANIQ_ROUTES = {
   GET_USERS_LIST: "/one_dollar_for_lunch/list",
   POST_DONATE_LIST: "/one_dollar_for_lunch/donate_list",
   GET_DONATIONS: "/one_dollar_for_lunch/donations/from_wallet/:wallet",
+  GET_DONATIONS_FROM_UID: "/one_dollar_for_lunch/donations/for_uid/:uid",
 };
 
 export const FINANCE_ROUTES = {

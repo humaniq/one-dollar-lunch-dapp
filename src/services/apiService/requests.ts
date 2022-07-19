@@ -47,6 +47,14 @@ export type GetUsersResponse = {
   payload: Array<User>;
 };
 
+export type ProfileResponse = {
+  payload: {
+    profile: User;
+    records: any;
+    total: number;
+  };
+};
+
 export type GetCoinCostResponse = {
   payload: { [key: string]: { [key: string]: { [key: string]: any } } };
 };
