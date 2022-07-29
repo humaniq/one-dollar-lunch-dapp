@@ -47,7 +47,7 @@ const DonationItem = ({ onClick, donation, source }: DonationItemProps) => {
   }, [donation, source]);
 
   return (
-    <div className="donation-item" onClick={() => {}}>
+    <div className="donation-item" onClick={() => onClick(donation)}>
       <div className="avatar">
         <CheckIcon sx={{ fontSize: 22, color: colors.greenMile }} />
       </div>

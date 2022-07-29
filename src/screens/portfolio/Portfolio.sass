@@ -1,8 +1,15 @@
 @import "src/styles/vars"
 
 .portfolio
-  width: 100%
+  position: relative
+  display: flex
+  flex-direction: column
+  height: 100%
+  width: 800px
+  padding: 16px
   background-color: $blue-ozone
+  @include mq($until: tablet)
+    width: 100%
   .content
     display: flex
     width: 100%

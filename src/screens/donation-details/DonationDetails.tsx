@@ -1,40 +1,69 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { withStore } from "utils/hoc";
 import { DonationDetailsViewModel } from "screens/donation-details/DonationDetailsViewModel";
 import { observer } from "mobx-react";
 import "./DonationDetails.sass";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  generatePath,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import colors from "utils/colors";
 import { t } from "i18next";
-import DonationSoup from "../../static/images/donation-soup.svg";
+import DonationSoup from "../../static/images/meal.svg";
+
 import routes from "utils/routes";
+import { UserDonation } from "../../services/apiService/requests";
+import dayjs from "dayjs";
+import { renderShortAddress } from "../../utils/address";
+import { getProviderStore } from "../../App";
+import { NETWORK_TYPE } from "../../constants/network";
 
-interface DonationDetailsInterface {}
+interface DonationDetailsInterface {
+  store: DonationDetailsViewModel;
+}
 
-const DonationDetailsImpl: React.FC<DonationDetailsInterface> = () => {
+const DonationDetailsImpl: React.FC<DonationDetailsInterface> = ({
+  store: view,
+}) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
+
+  useEffect(() => {
+    view.init(params?.donation || "", location.state as UserDonation);
+  }, []);
 
   const onBackClick = useCallback(() => {
     navigate(-1);
   }, [navigate]);
 
   const onViewOnScanClick = useCallback(() => {
+    window.location.href =
+      getProviderStore.currentNetwork.env === NETWORK_TYPE.PRODUCTION
+        ? `https://bscscan.com/tx/${view.userDonation.donation.txHash}`
+        : `https://testnet.bscscan.com/tx/${view.userDonation.donation.txHash}`;
     // do something interesting
   }, []);
 
   const onPortfolioClick = useCallback(() => {
-    navigate(routes.portfolio.path);
-  }, [navigate]);
+    navigate(
+      generatePath(routes.portfolio.path, {
+        uid: view.userDonation.receiver.uid,
+      })
+    );
+  }, [navigate, view.userDonation]);
 
   return (
     <div className="donation-details">
       <IconButton
         style={{
           alignSelf: "flex-start",
-          paddingTop: 16,
-          paddingBottom: 16,
+          marginTop: 16,
+          marginBottom: 16,
         }}
         onClick={onBackClick}
       >
@@ -68,15 +97,21 @@ const DonationDetailsImpl: React.FC<DonationDetailsInterface> = () => {
         </div>
         <div className="row">
           <span className="title">{t("donations.details.date")}</span>
-          <span className="sub">Sep 30 - 12:30</span>
+          <span className="sub">
+            {dayjs(view.userDonation?.donation?.timeStamp).format(
+              "MMM DD h:mm A"
+            )}
+          </span>
         </div>
         <div className="row">
           <span className="title">{t("donations.details.from")}</span>
-          <span className="sub">0x41...0b65</span>
+          <span className="sub">
+            {renderShortAddress(view.userDonation?.donation?.senderAddress)}
+          </span>
         </div>
         <div className="row" onClick={onPortfolioClick}>
           <span className="title">{t("donations.details.to")}</span>
-          <span className="sub">Lupita Nyong’o</span>
+          <span className="sub link">{`${view.userDonation?.receiver?.firstName} ${view.userDonation?.receiver?.lastName}`}</span>
         </div>
         <div className="row">
           <span className="title">{t("donations.details.howMany")}</span>

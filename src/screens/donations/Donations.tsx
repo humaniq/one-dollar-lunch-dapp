@@ -7,12 +7,13 @@ import { IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
-import { useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import routes from "utils/routes";
 import colors from "utils/colors";
 import { DonationsStore } from "../../App";
 import { currencyFormat } from "../../utils/number";
 import { CURRENCIES } from "../../constants/general";
+import { toJS } from "mobx";
 
 interface DonationsScreenInterface {
   store: DonationsViewModel;
@@ -32,7 +33,12 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
 
   const onDonationItemClick = useCallback(
     (donation) => {
-      navigate(routes.donationDetails.path, { state: { donation } });
+      navigate(
+        generatePath(routes.donationDetails.path, {
+          donation: donation.donation.txHash,
+        }),
+        { state: toJS(donation) }
+      );
     },
     [navigate]
   );
@@ -42,8 +48,8 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
       <IconButton
         style={{
           alignSelf: "flex-start",
-          paddingTop: 16,
-          paddingBottom: 16,
+          marginTop: 16,
+          marginBottom: 16,
         }}
         onClick={onBackClick}
       >
