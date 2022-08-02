@@ -11,6 +11,7 @@ import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
 import routes from "utils/routes";
 import { toJS } from "mobx";
+import Human from "../../static/images/human.svg";
 
 interface PortfolioInterface {
   store: PortfolioViewModel;
@@ -58,8 +59,8 @@ const PortfolioImpl: React.FC<PortfolioInterface> = ({ store: view }) => {
           <div className="first">
             <img
               alt="portfolio"
-              className="image"
-              src={view.profile?.photoURI}
+              className={`image ${!view.profile?.photoURI ? "no-image" : ""}`}
+              src={view.profile?.photoURI || Human}
             />
           </div>
           <div className="second">
