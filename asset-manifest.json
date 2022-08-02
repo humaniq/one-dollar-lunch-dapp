@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.daa45965.chunk.css",
-    "main.js": "./static/js/main.f4fcf118.chunk.js",
-    "main.js.map": "./static/js/main.f4fcf118.chunk.js.map",
+    "main.js": "./static/js/main.178c9703.chunk.js",
+    "main.js.map": "./static/js/main.178c9703.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.cbaf1268.js",
     "runtime-main.js.map": "./static/js/runtime-main.cbaf1268.js.map",
     "static/js/2.7eb43881.chunk.js": "./static/js/2.7eb43881.chunk.js",
@@ -13,7 +13,7 @@
     "static/media/BNB.12f6ca37.png": "./static/media/BNB.12f6ca37.png",
     "static/media/africa.13a7312a.svg": "./static/media/africa.13a7312a.svg",
     "static/media/donations.917270c2.svg": "./static/media/donations.917270c2.svg",
-    "static/media/human.e8fed779.svg": "./static/media/human.e8fed779.svg",
+    "static/media/human.570000d5.svg": "./static/media/human.570000d5.svg",
     "static/media/humaniq-logo.cb2c62db.svg": "./static/media/humaniq-logo.cb2c62db.svg",
     "static/media/ic_change.b24d82e7.svg": "./static/media/ic_change.b24d82e7.svg",
     "static/media/ic_cross.c014917d.svg": "./static/media/ic_cross.c014917d.svg",
@@ -30,6 +30,6 @@
     "static/js/runtime-main.cbaf1268.js",
     "static/js/2.7eb43881.chunk.js",
     "static/css/main.daa45965.chunk.css",
-    "static/js/main.f4fcf118.chunk.js"
+    "static/js/main.178c9703.chunk.js"
   ]
 }
