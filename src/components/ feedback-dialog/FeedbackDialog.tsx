@@ -46,7 +46,10 @@ const FeedbackDialogImpl: React.FC<FeedbackDialogInterface> = ({
             {t("feedbackDialog.later")}
           </Button>
           <button
-            onClick={transactionStore.sendTransaction}
+            onClick={() => {
+              window.location.href =
+                "https://e97wndugrno.typeform.com/to/myMO3Ffr";
+            }}
             className="share-button"
           >
             {t("feedbackDialog.share")}
