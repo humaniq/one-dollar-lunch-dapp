@@ -24,6 +24,7 @@ export class Transaction {
   displayConfirmView = false;
   transactionDialogVisible = false;
   transactionMessageVisible = false;
+  feedbackDialogVisible = false;
   transactionMessageStatus = TRANSACTION_STATUS.PENDING;
   transactionMessage = "";
   contract: Donation;
@@ -88,6 +89,11 @@ export class Transaction {
   setTransactionDialogVisibility = (visibility: boolean) => {
     this.transactionDialogVisible = visibility;
   };
+
+  setFeedBackDialogVisibility = (visibility: boolean) => {
+    this.feedbackDialogVisible = visibility;
+  };
+
   init = async () => {
     this.api.init(API_HUMANIQ_URL, { "x-auth-token": API_HUMANIQ_TOKEN });
 
@@ -168,7 +174,9 @@ export class Transaction {
         this.transactionMessageVisible = true;
         try {
           await this.contract.waitForTransaction(hash);
-          this.transactionMessageStatus = TRANSACTION_STATUS.SUCCESS;
+          this.setFeedBackDialogVisibility(true);
+          this.transactionMessageVisible = false;
+          // this.transactionMessageStatus = TRANSACTION_STATUS.SUCCESS;
         } catch (e: any) {
           this.transactionMessageStatus = TRANSACTION_STATUS.ERROR;
         }

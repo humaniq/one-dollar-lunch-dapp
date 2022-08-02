@@ -65,12 +65,20 @@ export type Donation = {
   symbol: string;
   amount: number;
   timeStamp: string;
+  txHash?: string;
 };
 
 export type GetDonationsRequest = {
   group_order: string;
   page_index: number;
   page_size: number;
+};
+
+export type UserDonationResponse = {
+  payload: {
+    records: Array<UserDonation>;
+    totals: any;
+  };
 };
 
 export type UserDonation = {

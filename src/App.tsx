@@ -19,6 +19,7 @@ import { Transaction } from "./stores/transactionStore";
 import { TransactionMessage } from "./components/transaction-message/TransactionMessage";
 import { Donations as DS } from "./stores/donationsStore";
 import { Donations } from "./screens/donations/Donations";
+import { FeedbackDialog } from "./components/ feedback-dialog/FeedbackDialog";
 
 window.Buffer = b.Buffer;
 
@@ -72,6 +73,10 @@ export const App = observer(() => {
         <TransactionDialog
           onClose={() => transactionStore.setTransactionDialogVisibility(false)}
           visible={transactionStore.transactionDialogVisible}
+        />
+        <FeedbackDialog
+          visible={transactionStore.feedbackDialogVisible}
+          onClose={() => transactionStore.setFeedBackDialogVisibility(false)}
         />
         <TransactionMessage
           isOpen={transactionStore.transactionMessageVisible}

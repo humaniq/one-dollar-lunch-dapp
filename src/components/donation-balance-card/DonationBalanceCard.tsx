@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.sass";
-import Lunch from "../../static/images/main-card-image.svg";
-import Soup from "../../static/images/soup.svg";
+import Soup from "../../static/images/africa.svg";
 import { observer } from "mobx-react";
 import { t } from "i18next";
 import { DonationsStore } from "../../App";

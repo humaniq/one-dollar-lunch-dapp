@@ -6,10 +6,12 @@ import { observer } from "mobx-react";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import colors from "utils/colors";
-import { useNavigate, useParams } from "react-router-dom";
+import { generatePath, useNavigate, useParams } from "react-router-dom";
 import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
 import routes from "utils/routes";
+import { toJS } from "mobx";
+import Human from "../../static/images/human.svg";
 
 interface PortfolioInterface {
   store: PortfolioViewModel;
@@ -27,9 +29,18 @@ const PortfolioImpl: React.FC<PortfolioInterface> = ({ store: view }) => {
     navigate(-1);
   }, [navigate]);
 
-  const onDonationItemClick = useCallback(() => {
-    navigate(routes.donationDetails.path);
-  }, [navigate]);
+  const onDonationItemClick = useCallback(
+    (donation) => {
+      console.log(donation);
+      navigate(
+        generatePath(routes.donationDetails.path, {
+          donation: donation.donation.txHash,
+        }),
+        { state: toJS(donation) }
+      );
+    },
+    [navigate]
+  );
 
   return (
     <div className="portfolio">
@@ -48,8 +59,8 @@ const PortfolioImpl: React.FC<PortfolioInterface> = ({ store: view }) => {
           <div className="first">
             <img
               alt="portfolio"
-              className="image"
-              src={view.profile?.photoURI}
+              className={`image ${!view.profile?.photoURI ? "no-image" : ""}`}
+              src={view.profile?.photoURI || Human}
             />
           </div>
           <div className="second">
