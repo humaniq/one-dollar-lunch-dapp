@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.dbf8fcb2.chunk.css",
-    "main.js": "./static/js/main.28007b2d.chunk.js",
-    "main.js.map": "./static/js/main.28007b2d.chunk.js.map",
+    "main.css": "./static/css/main.daa45965.chunk.css",
+    "main.js": "./static/js/main.f4fcf118.chunk.js",
+    "main.js.map": "./static/js/main.f4fcf118.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.cbaf1268.js",
     "runtime-main.js.map": "./static/js/runtime-main.cbaf1268.js.map",
-    "static/js/2.3de80016.chunk.js": "./static/js/2.3de80016.chunk.js",
-    "static/js/2.3de80016.chunk.js.map": "./static/js/2.3de80016.chunk.js.map",
+    "static/js/2.7eb43881.chunk.js": "./static/js/2.7eb43881.chunk.js",
+    "static/js/2.7eb43881.chunk.js.map": "./static/js/2.7eb43881.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.dbf8fcb2.chunk.css.map": "./static/css/main.dbf8fcb2.chunk.css.map",
-    "static/js/2.3de80016.chunk.js.LICENSE.txt": "./static/js/2.3de80016.chunk.js.LICENSE.txt",
+    "static/css/main.daa45965.chunk.css.map": "./static/css/main.daa45965.chunk.css.map",
+    "static/js/2.7eb43881.chunk.js.LICENSE.txt": "./static/js/2.7eb43881.chunk.js.LICENSE.txt",
     "static/media/BNB.12f6ca37.png": "./static/media/BNB.12f6ca37.png",
-    "static/media/donation-soup.0852f7e6.svg": "./static/media/donation-soup.0852f7e6.svg",
+    "static/media/africa.13a7312a.svg": "./static/media/africa.13a7312a.svg",
+    "static/media/donations.917270c2.svg": "./static/media/donations.917270c2.svg",
     "static/media/human.e8fed779.svg": "./static/media/human.e8fed779.svg",
     "static/media/humaniq-logo.cb2c62db.svg": "./static/media/humaniq-logo.cb2c62db.svg",
     "static/media/ic_change.b24d82e7.svg": "./static/media/ic_change.b24d82e7.svg",
@@ -19,16 +20,16 @@
     "static/media/ic_filter.eaf5032e.svg": "./static/media/ic_filter.eaf5032e.svg",
     "static/media/ic_max.55acdbd1.svg": "./static/media/ic_max.55acdbd1.svg",
     "static/media/ic_search.6d0afefc.svg": "./static/media/ic_search.6d0afefc.svg",
+    "static/media/meal.3409e246.svg": "./static/media/meal.3409e246.svg",
     "static/media/metamask-logo.6837d818.svg": "./static/media/metamask-logo.6837d818.svg",
-    "static/media/soup.71b5d577.svg": "./static/media/soup.71b5d577.svg",
     "static/media/wallet-connect-logo.6fa61a47.svg": "./static/media/wallet-connect-logo.6fa61a47.svg",
     "static/media/wallet.f1596f01.svg": "./static/media/wallet.f1596f01.svg",
     "static/media/web3-logo.9ae2b06d.svg": "./static/media/web3-logo.9ae2b06d.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.cbaf1268.js",
-    "static/js/2.3de80016.chunk.js",
-    "static/css/main.dbf8fcb2.chunk.css",
-    "static/js/main.28007b2d.chunk.js"
+    "static/js/2.7eb43881.chunk.js",
+    "static/css/main.daa45965.chunk.css",
+    "static/js/main.f4fcf118.chunk.js"
   ]
 }
