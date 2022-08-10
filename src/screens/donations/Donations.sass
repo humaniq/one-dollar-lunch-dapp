@@ -4,8 +4,10 @@
   position: relative
   display: flex
   flex-direction: column
-  width: 100%
   background-color: $blue-ozone
+  width: 600px
+  @include mq($until: tablet)
+    width: 100%
   .content
     display: flex
     width: 100%
@@ -15,15 +17,15 @@
       align-items: center
       margin-top: 5em
       .illustration
-      .illustration-label
-        font-style: normal
-        font-weight: 400
-        font-size: 16px
-        line-height: 22px
-        display: flex
-        text-align: center
-        color: $grey-text
-        margin-top: 16px
+        .illustration-label
+          font-style: normal
+          font-weight: 400
+          font-size: 16px
+          line-height: 22px
+          display: flex
+          text-align: center
+          color: $grey-text
+          margin-top: 16px
   .donations-balance-container
     display: flex
     flex-direction: column

@@ -42,8 +42,8 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
       <IconButton
         style={{
           alignSelf: "flex-start",
-          paddingTop: 16,
-          paddingBottom: 16,
+          marginTop: 16,
+          marginBottom: 16,
         }}
         onClick={onBackClick}
       >

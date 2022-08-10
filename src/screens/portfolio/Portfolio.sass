@@ -1,8 +1,10 @@
 @import "src/styles/vars"
 
 .portfolio
-  width: 100%
   background-color: $blue-ozone
+  width: 600px
+  @include mq($until: tablet)
+    width: 100%
   .content
     display: flex
     width: 100%
@@ -19,7 +21,6 @@
       flex-direction: row
       .first
         display: flex
-        flex: 0.5
         justify-content: center
         align-items: center
         margin-right: 6px

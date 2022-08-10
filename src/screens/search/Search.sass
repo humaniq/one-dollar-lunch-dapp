@@ -5,7 +5,9 @@
   flex-direction: column
   padding: 16px
   background-color: $blue-ozone
-  width: 100%
+  width: 600px
+  @include mq($until: tablet)
+    width: 100%
   .search-input
     display: flex
     flex-direction: row
