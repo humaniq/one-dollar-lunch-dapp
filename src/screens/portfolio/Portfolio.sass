@@ -5,7 +5,7 @@
   display: flex
   flex-direction: column
   height: 100%
-  width: 800px
+  width: 600px
   padding: 16px
   background-color: $blue-ozone
   @include mq($until: tablet)
@@ -17,8 +17,6 @@
     display: flex
     flex-direction: column
     background-color: $white-snow
-    margin-left: 16px
-    margin-right: 16px
     border-radius: 12px
     padding: 8px
     .top-info
@@ -26,7 +24,6 @@
       flex-direction: row
       .first
         display: flex
-        flex: 0.5
         justify-content: center
         align-items: center
         margin-right: 6px
@@ -64,6 +61,7 @@
           letter-spacing: 0.5px
           color: $grey-text
     .button
+      cursor: pointer
       background-color: $primary-light
       color: $blue-primary
       margin-top: 8px

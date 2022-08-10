@@ -4,7 +4,7 @@
   height: 100%
   display: flex
   flex-direction: column
-  width: 800px
+  width: 600px
   @include mq($until: tablet)
     width: 100%
   background-color: $white-snow
@@ -26,6 +26,7 @@
       letter-spacing: 0.5px
       color: $blue-ocean
     .wallet-connect
+      cursor: pointer
       background-color: transparent
       color: $blue-ocean
       padding: 8px 12px
@@ -58,7 +59,9 @@
       .search
         height: 21px
         margin-left: 16px
+        cursor: pointer
       .filter
+        cursor: pointer
         height: 21px
         margin-left: 16px
   .bar-content

@@ -5,7 +5,7 @@
   display: flex
   flex-direction: column
   height: 100%
-  width: 800px
+  width: 600px
   padding: 16px
   background-color: $blue-ozone
   @include mq($until: tablet)
@@ -47,7 +47,6 @@
     margin-top: 20px
     .first
       display: flex
-      flex: 0.5
       padding: 16px
       background-color: $grey-bg
       justify-content: center
@@ -99,7 +98,7 @@
       color: $grey-text
       margin-top: 4px
   .content
-    margin: 16px
+    margin: 16px 0
     background-color: $white-snow
     border-radius: 12px
     .row
@@ -133,3 +132,4 @@
         color: $blue-ocean
         &.link
           text-decoration: underline
+          cursor: pointer
