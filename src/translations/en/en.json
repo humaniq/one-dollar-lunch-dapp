@@ -68,7 +68,7 @@
   },
   "donations": {
     "donationsAppear": "Your donations will appear here",
-    "totalDonate": "Total donates: {{0}}",
+    "totalDonate": "Total donations: {{0}}",
     "reportReady": "Report is ready",
     "reportWaiting": "Waiting for report",
     "details": {
@@ -100,9 +100,9 @@
     "total": "Total",
     "later": "Maybe later",
     "allow": "Yes, allow this transaction",
-    "randomlyLaunch": "1 launch for 1 randomly people",
+    "randomlyLaunch": "1 lunch for 1 randomly people",
     "randomlyLaunches": "{{0}} launches for {{0}} randomly people",
-    "chosenLaunchOne": "1 launch for {{0}}",
+    "chosenLaunchOne": "1 lunch for {{0}}",
     "chosenLaunches": "Launches for {{0}} chosen",
     "and": "and"
   },
