@@ -9,7 +9,7 @@ const routes = {
     path: "/donations",
   },
   donationDetails: {
-    path: "/donationDetails",
+    path: "/donationDetails/:donation",
   },
   portfolio: {
     path: "/portfolio/:uid",
