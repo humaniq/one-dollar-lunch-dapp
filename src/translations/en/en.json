@@ -118,5 +118,11 @@
   "multiselectBar": {
     "title": "{{0}} Profiles selected",
     "donate": "Donate"
+  },
+  "feedbackDialog": {
+    "title": "Thank you for your donation:",
+    "description": "We want to be the most transparent charity project. Please share your feedback ",
+    "later": "May be later",
+    "share": "Share feedback"
   }
 }
