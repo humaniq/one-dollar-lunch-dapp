@@ -216,7 +216,7 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
               }
             >
               {t("transaction.donate", {
-                0: transactionStore.txData.value
+                0: transactionStore.inputFiat
                   ? `$${transactionStore.txData.value}`
                   : `${transactionStore.txData.value}`,
               })}
