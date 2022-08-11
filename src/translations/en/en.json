@@ -113,7 +113,7 @@
     "denied": "User denied transaction"
   },
   "userCard": {
-    "label": "Donate 1$"
+    "label": "Donate $1"
   },
   "multiselectBar": {
     "title": "{{0}} Profiles selected",

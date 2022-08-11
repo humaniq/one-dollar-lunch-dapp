@@ -6,7 +6,7 @@ const colors = {
   blueOcean: "#001833",
   textGrey: "#9B9B9B",
   bg: "#F5FAFF",
-  white: "#FFFFFF",
+  white: "#F5FAFF",
   grey: "#E0E0E0",
   greyLight: "#F2F3F6",
   greenMile: "#4CAF50",
