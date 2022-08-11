@@ -11,18 +11,21 @@ import { app } from "stores/appStore/appStore";
 import MuiAlert from "@mui/material/Alert";
 import { Main } from "screens/main/Main";
 import { Search } from "screens/search/Search";
-import { Donations } from "screens/donations/Donations";
 import { DonationDetails } from "screens/donation-details/DonationDetails";
 import { Portfolio } from "screens/portfolio/Portfolio";
 import { Profiles } from "screens/profiles/Profiles";
 import { TransactionDialog } from "./components/transaction-dialog/TransactionDialog";
-import { Transaction } from "./stores/transaction/transactionStore";
+import { Transaction } from "./stores/transactionStore";
 import { TransactionMessage } from "./components/transaction-message/TransactionMessage";
+import { Donations as DS } from "./stores/donationsStore";
+import { Donations } from "./screens/donations/Donations";
+import { FeedbackDialog } from "./components/ feedback-dialog/FeedbackDialog";
 
 window.Buffer = b.Buffer;
 
 export const getProviderStore = new ProviderStore();
 export const transactionStore = new Transaction();
+export const DonationsStore = new DS();
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -43,6 +46,7 @@ export const App = observer(() => {
   useEffect(() => {
     (async () => {
       await getProviderStore.init();
+      await DonationsStore.init();
       // await transactionStore.init()
     })();
   }, []);
@@ -69,6 +73,10 @@ export const App = observer(() => {
         <TransactionDialog
           onClose={() => transactionStore.setTransactionDialogVisibility(false)}
           visible={transactionStore.transactionDialogVisible}
+        />
+        <FeedbackDialog
+          visible={transactionStore.feedbackDialogVisible}
+          onClose={() => transactionStore.setFeedBackDialogVisibility(false)}
         />
         <TransactionMessage
           isOpen={transactionStore.transactionMessageVisible}

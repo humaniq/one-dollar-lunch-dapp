@@ -29,6 +29,11 @@
     border-radius: 14px 14px 0 0
     height: 98px
     object-fit: cover
+    cursor: pointer
+    &.no-image
+      background-color: $blue-light
+      object-fit: contain
+      padding: 10px
   .title
     font-style: normal
     font-weight: 500
@@ -51,6 +56,7 @@
     color: $grey-text
     flex: none
   .button
+    cursor: pointer
     background-color: $primary-light
     color: $blue-primary
     margin-top: 8px

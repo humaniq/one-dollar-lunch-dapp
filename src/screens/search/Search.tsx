@@ -3,7 +3,7 @@ import { withStore } from "utils/hoc";
 import { SearchViewModel } from "screens/search/SearchViewModel";
 import { observer } from "mobx-react";
 import "./Search.sass";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from "../../static/icons/ic_back.svg";
 import { IconButton } from "@mui/material";
 import { t } from "i18next";
 import { useNavigate } from "react-router-dom";
@@ -21,13 +21,13 @@ const SearchImpl: React.FC<SearchScreenInterface> = ({ store: view }) => {
     return () => {
       view.destroy();
     };
-  }, []);
+  }, [view, navigate]);
 
   return (
     <div className="search-container">
       <div className="search-input">
         <IconButton onClick={view.onBackClick}>
-          <ArrowBackIcon sx={{ fontSize: 28, color: "#001833" }} />
+          <img src={ArrowBackIcon} alt={"back"} />
         </IconButton>
         <input
           onChange={view.onSearch}

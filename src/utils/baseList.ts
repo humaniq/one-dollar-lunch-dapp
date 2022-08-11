@@ -1,4 +1,4 @@
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { ApiService } from "../services/apiService/apiService";
 import { API_HUMANIQ_TOKEN, API_HUMANIQ_URL } from "../constants/api";
 
@@ -19,7 +19,8 @@ export class BaseList<Model, Request> {
   initialized = false;
   listUrl = "";
   next?: string;
-  params: Request;
+  params: Request | undefined;
+  other: any;
 
   constructor({
     baseUrl = API_HUMANIQ_URL,
@@ -34,11 +35,19 @@ export class BaseList<Model, Request> {
     this.pageSize = pageSize;
   }
 
+  clear = () => {
+    this.params = undefined;
+    this.next = "";
+    this.initialized = false;
+    this.list = [];
+  };
+
   fetchList = async (params?: Request) => {
     if (params && JSON.stringify(params) !== JSON.stringify(this.params)) {
       this.params = params;
       this.initialized = false;
       this.next = "";
+      this.pending = false;
     }
     if (this.pending || (this.initialized && !this.next)) return;
 
@@ -51,9 +60,13 @@ export class BaseList<Model, Request> {
 
     if (result.isOk) {
       if (!this.initialized) {
-        this.list = result.data.payload.records || [];
+        const { records, ...other } = result.data.payload;
+        this.list = records || [];
+        this.other = other;
       } else {
-        this.list = this.list.concat(result.data.payload.records || []);
+        const { records, ...other } = result.data.payload;
+        this.list = this.list.concat(records || []);
+        this.other = other;
       }
       this.next = result.data.payload.links?.next;
     }

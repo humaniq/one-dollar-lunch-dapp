@@ -1,0 +1,55 @@
+@import "src/styles/vars"
+
+.feedback
+  display: flex
+  flex-direction: column
+  padding-top: 16px
+  padding-left: 20px
+  padding-right: 20px
+  background-color: $white-snow
+  .content-container
+    padding-top: 16px
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    .receivers
+      padding-top: 8px
+    .donation-img
+      height: 127px
+      padding-bottom: 16px
+    .tittle
+      font-weight: 500
+      font-size: 16px
+      line-height: 22px
+    .description
+      padding-top: 16px
+      font-size: 14px
+      line-height: 18px
+      color: $grey-text
+      text-align: center
+  .btn-container
+    display: flex
+    flex-direction: column
+    .later-button
+      margin-top: 16px !important
+    .share-button
+      border: none
+      background-color: $blue-primary
+      color: $white-snow
+      font-style: normal
+      font-weight: 500
+      font-size: 16px
+      letter-spacing: 0.5px
+      padding: 12px
+      border-radius: 12px
+      margin-top: 16px
+      margin-bottom: 16px
+      &:hover
+        background-color: rgba($blue-primary, 0.7)
+
+.header-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start

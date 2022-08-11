@@ -1,10 +1,13 @@
-export const API_HUMANIQ_URL = "https://signupbot.humaniq.com/api/v0";
+export const API_HUMANIQ_URL = process.env.REACT_APP_API_HUMANIQ_URL || "";
 export const API_FINANCE = "https://apifinance.humaniq.com/api/v1";
 export const API_HUMANIQ_TOKEN = "XMaLhU75ZFklvAiV7yBZBNnlWsE9IowU";
 
 export const HUMANIQ_ROUTES = {
   GET_USERS_LIST: "/one_dollar_for_lunch/list",
   POST_DONATE_LIST: "/one_dollar_for_lunch/donate_list",
+  GET_DONATIONS: "/one_dollar_for_lunch/donations/from_wallet/:wallet",
+  GET_DONATIONS_FROM_UID: "/one_dollar_for_lunch/donations/for_uid/:uid",
+  GET_DONATION_FROM_HASH: "/one_dollar_for_lunch/donations/transaction/:hash",
 };
 
 export const FINANCE_ROUTES = {

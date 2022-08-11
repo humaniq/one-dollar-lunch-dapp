@@ -18,15 +18,8 @@ import { DisconnectDialog } from "components/dialogs/DisconnectDialog";
 import { getProviderStore, transactionStore } from "App";
 import { useNavigate } from "react-router-dom";
 import { FilterDialog } from "screens/main/filter/FilterDialog";
-import { UsersStore } from "../../stores/usersStore/usersStore";
+import { UsersStore } from "../../stores/usersStore";
 import { renderShortAddress } from "../../utils/address";
-
-interface TabPanelInterface {
-  children?: React.ReactNode;
-  style?: any;
-  index: number;
-  value: number;
-}
 
 interface MainScreenInterface {
   store: MainViewModel;
@@ -40,7 +33,7 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
     return () => {
       view.destroy();
     };
-  }, []);
+  }, [navigate, view]);
 
   return (
     <div className="container">

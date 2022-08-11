@@ -1,17 +1,17 @@
 import { makeAutoObservable, reaction } from "mobx";
-import { Donation } from "../../models/contracts/Donation";
+import { Donation } from "../models/contracts/Donation";
 import { BigNumber, ethers } from "ethers";
-import { getProviderStore } from "../../App";
-import { currencyFormat } from "../../utils/number";
-import { ApiService } from "../../services/apiService/apiService";
+import { getProviderStore } from "../App";
+import { currencyFormat } from "../utils/number";
+import { ApiService } from "../services/apiService/apiService";
 import {
   API_HUMANIQ_TOKEN,
   API_HUMANIQ_URL,
   HUMANIQ_ROUTES,
-} from "../../constants/api";
-import { GetUsersResponse } from "../../services/apiService/requests";
-import { UsersStore } from "../usersStore/usersStore";
-import { TRANSACTION_STATUS } from "../../components/transaction-message/TransactionMessage";
+} from "../constants/api";
+import { GetUsersResponse } from "../services/apiService/requests";
+import { UsersStore } from "./usersStore";
+import { TRANSACTION_STATUS } from "../components/transaction-message/TransactionMessage";
 import { t } from "i18next";
 
 export class Transaction {
@@ -24,6 +24,7 @@ export class Transaction {
   displayConfirmView = false;
   transactionDialogVisible = false;
   transactionMessageVisible = false;
+  feedbackDialogVisible = false;
   transactionMessageStatus = TRANSACTION_STATUS.PENDING;
   transactionMessage = "";
   contract: Donation;
@@ -44,9 +45,55 @@ export class Transaction {
     from: "",
   };
 
+  get donationCountPeopleTittle() {
+    if (UsersStore.selectedUsers.size === 0) {
+      if (this.selectedAddresses.length === 1) {
+        return t("transactionDialog.randomlyLaunch");
+      } else {
+        return t("transactionDialog.randomlyLaunches", {
+          0: this.selectedAddresses.length,
+        });
+      }
+    } else if (UsersStore.selectedUsers.size === 1) {
+      const user = UsersStore.users.list.find(
+        (u) => u.uid === UsersStore.selectedUsersList[0]
+      );
+      if (this.selectedAddresses.length === 1) {
+        return t("transactionDialog.chosenLaunchOne", {
+          0: `${user?.firstName || ""} ${user?.lastName || ""}`,
+        });
+      } else {
+        return `${t("transactionDialog.chosenLaunchOne", {
+          0: `${user?.firstName || ""} ${user?.lastName || ""}`,
+        })} ${t("transactionDialog.and")} ${t(
+          "transactionDialog.randomlyLaunches",
+          { 0: this.selectedAddresses.length - 1 }
+        )}`;
+      }
+    } else {
+      if (this.selectedAddresses.length === UsersStore.selectedUsers.size) {
+        return t("transactionDialog.chosenLaunches", {
+          0: UsersStore.selectedUsers.size,
+        });
+      } else {
+        return `${t("transactionDialog.chosenLaunches", {
+          0: UsersStore.selectedUsers.size,
+        })} ${t("transactionDialog.and")} ${t(
+          "transactionDialog.randomlyLaunches",
+          { 0: this.selectedAddresses.length - UsersStore.selectedUsers.size }
+        )}`;
+      }
+    }
+  }
+
   setTransactionDialogVisibility = (visibility: boolean) => {
     this.transactionDialogVisible = visibility;
   };
+
+  setFeedBackDialogVisibility = (visibility: boolean) => {
+    this.feedbackDialogVisible = visibility;
+  };
+
   init = async () => {
     this.api.init(API_HUMANIQ_URL, { "x-auth-token": API_HUMANIQ_TOKEN });
 
@@ -59,6 +106,13 @@ export class Transaction {
         await this.getTransactionData();
       }
     );
+
+    // reaction(()=> getProviderStore.currentAccount, async (val) => {
+    //   if(!val) return
+    //   this.setValueByCountUsers();
+    //   await this.getUsersInfo();
+    //   await this.getTransactionData();
+    // })
 
     reaction(
       () => this.txData.value,
@@ -120,7 +174,9 @@ export class Transaction {
         this.transactionMessageVisible = true;
         try {
           await this.contract.waitForTransaction(hash);
-          this.transactionMessageStatus = TRANSACTION_STATUS.SUCCESS;
+          this.setFeedBackDialogVisibility(true);
+          this.transactionMessageVisible = false;
+          // this.transactionMessageStatus = TRANSACTION_STATUS.SUCCESS;
         } catch (e: any) {
           this.transactionMessageStatus = TRANSACTION_STATUS.ERROR;
         }

@@ -1,6 +1,6 @@
 import { IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { getProviderStore, transactionStore } from "App";
-import { UsersStore } from "../../stores/usersStore/usersStore";
+import { UsersStore } from "../../stores/usersStore";
 import { app } from "../../stores/appStore/appStore";
 import { NavigateFunction } from "react-router-dom";
 import { DONATION_CLICK_TYPE } from "../../components/donation-balance-card/DonationBalanceCard";
@@ -137,6 +137,8 @@ export class MainViewModel {
   };
 
   onClickCard = (userId?: string) => {
+    if (!getProviderStore.currentAccount)
+      return (getProviderStore.connectDialog = !getProviderStore.connectDialog);
     if (UsersStore.multiselectMode) {
       userId && UsersStore.selectedUsers.add(userId);
     } else {

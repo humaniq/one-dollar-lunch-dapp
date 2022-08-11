@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./style.sass";
 import { Avatar, Button, IconButton, SwipeableDrawer } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from " ../../static/icons/ic_back.svg";
 import { ReactComponent as MaxIcon } from "../../static/icons/ic_max.svg";
 import { ReactComponent as ChangeIcon } from "../../static/icons/ic_change.svg";
 import AutosizeInput from "react-input-autosize";
@@ -46,7 +46,7 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
         <div className="header-container">
           {!view.displayConfirmView ? (
             <IconButton onClick={onClose}>
-              <ArrowBackIcon sx={{ fontSize: 28, color: "#001833" }} />
+              <img src={ArrowBackIcon} alt={"back"} />
             </IconButton>
           ) : (
             <div className={"flex"}>
@@ -203,6 +203,10 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
               transactionStore.transactionFiatFee,
               "usd"
             )}`}</span>
+            <span className={"users-counter-title"}>
+              {" "}
+              {transactionStore.donationCountPeopleTittle}
+            </span>
             <button
               onClick={() => (transactionStore.displayConfirmView = true)}
               className="donate-button"
@@ -211,7 +215,11 @@ const TransactionDialogImpl: React.FC<TransactionDialogInterface> = ({
                 !transactionStore.enoughUsersForDonate
               }
             >
-              {t("transaction.donate", { 0: transactionStore.txData.value })}
+              {t("transaction.donate", {
+                0: transactionStore.inputFiat
+                  ? `$${transactionStore.txData.value}`
+                  : `${transactionStore.txData.value}`,
+              })}
             </button>
           </>
         )}

@@ -1,8 +1,15 @@
 @import "src/styles/vars"
 
 .donation-details
-  width: 100%
+  position: relative
+  display: flex
+  flex-direction: column
+  height: 100%
+  width: 600px
+  padding: 16px
   background-color: $blue-ozone
+  @include mq($until: tablet)
+    width: 100%
   .header
     display: flex
     flex-direction: row
@@ -29,8 +36,7 @@
       text-align: right
       letter-spacing: 0.5px
       color: $blue-primary
-      padding-top: 4px
-      padding-bottom: 4px
+      padding: 4px
       &:hover
         background-color: $blue-primary
         color: $white-snow
@@ -41,7 +47,6 @@
     margin-top: 20px
     .first
       display: flex
-      flex: 0.5
       padding: 16px
       background-color: $grey-bg
       justify-content: center
@@ -49,7 +54,7 @@
       border-radius: 12px
       margin-right: 6px
       .soup
-        width: 150px
+        width: 100px
     .second
       display: flex
       flex: 0.5
@@ -93,7 +98,7 @@
       color: $grey-text
       margin-top: 4px
   .content
-    margin: 16px
+    margin: 16px 0
     background-color: $white-snow
     border-radius: 12px
     .row
@@ -125,3 +130,6 @@
         align-items: center
         text-align: right
         color: $blue-ocean
+        &.link
+          text-decoration: underline
+          cursor: pointer

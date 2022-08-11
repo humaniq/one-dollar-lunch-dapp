@@ -1,1 +1,1 @@
-Humaniq 1$ lunch
+Humaniq 1$ lunch dapp

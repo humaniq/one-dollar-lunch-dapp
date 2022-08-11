@@ -47,6 +47,41 @@ export type GetUsersResponse = {
   payload: Array<User>;
 };
 
+export type ProfileResponse = {
+  payload: {
+    profile: User;
+    records: any;
+    total: number;
+  };
+};
+
 export type GetCoinCostResponse = {
   payload: { [key: string]: { [key: string]: { [key: string]: any } } };
+};
+
+export type Donation = {
+  senderAddress: string;
+  receiverAddress: string;
+  symbol: string;
+  amount: number;
+  timeStamp: string;
+  txHash?: string;
+};
+
+export type GetDonationsRequest = {
+  group_order: string;
+  page_index: number;
+  page_size: number;
+};
+
+export type UserDonationResponse = {
+  payload: {
+    records: Array<UserDonation>;
+    totals: any;
+  };
+};
+
+export type UserDonation = {
+  receiver: User;
+  donation: Donation;
 };

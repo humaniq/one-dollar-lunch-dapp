@@ -76,7 +76,7 @@ export class ProviderStore {
 
     const { provider: ethereum } = this.currentProvider;
 
-    ethereum.removeAllListeners();
+    ethereum.removeAllListeners && ethereum.removeAllListeners();
 
     ethereum.on("accountsChanged", async (accounts: any) => {
       console.log(accounts, this.currentAccount);
@@ -92,8 +92,10 @@ export class ProviderStore {
     });
 
     ethereum.on("connect", async (info: any) => {
+      console.log("connect");
       if (parseInt(info.chainId, 16) === this.currentNetwork.chainID) return;
-      await this.init();
+      console.log("connect");
+      await this.updateBalances();
       await transactionStore.init();
     });
 
@@ -176,7 +178,9 @@ export class ProviderStore {
       const accounts = await this.currentProvider.provider.request({
         method: "eth_requestAccounts",
       });
+
       this.currentAccount = accounts[0];
+      await this.updateBalances();
     } catch (e) {
       Logcat.info("ERROR", e);
     }
@@ -206,6 +210,7 @@ export class ProviderStore {
       Logcat.info("ERROR", e);
     }
   };
+
   disconnect = () => {
     this.currentAccount = null;
     this.disconnectDialog = false;

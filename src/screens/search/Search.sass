@@ -5,12 +5,14 @@
   flex-direction: column
   padding: 16px
   background-color: $blue-ozone
-  width: 100%
+  width: 600px
+  @include mq($until: tablet)
+    width: 100%
   .search-input
     display: flex
     flex-direction: row
     align-items: center
-    background-color: $white-snow
+    background-color: white
     box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16)
     border-radius: 12px
     .input
@@ -21,5 +23,8 @@
       font-size: 16px
       &::placeholder
         color: $grey-text
+        font-size: 14px
+        letter-spacing: 0
+        font-family: Roboto,serif
       &:focus
         outline: none!important

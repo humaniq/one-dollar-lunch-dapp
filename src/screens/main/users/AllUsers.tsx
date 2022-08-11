@@ -1,11 +1,14 @@
 import React from "react";
 import "./AllUsers.sass";
-import { UsersStore } from "../../../stores/usersStore/usersStore";
+import { UsersStore } from "../../../stores/usersStore";
 import { observer } from "mobx-react";
 import { User } from "../../../services/apiService/requests";
 import { CircularProgress } from "@mui/material";
 import { t } from "i18next";
 import { CheckBox } from "../../../components/check-box/CheckBox";
+import Human from "../../../static/images/human.svg";
+import { generatePath, useNavigate } from "react-router-dom";
+import routes from "../../../utils/routes";
 
 interface AllUserItemProps {
   onClick: (id: string) => void;
@@ -20,10 +23,18 @@ const UserItem: React.FC<AllUserItemProps> = ({
   checked = false,
   multiselectMode,
 }) => {
+  const navigation = useNavigate();
   return (
     <div className="user-item-container">
       <div className="user-item">
-        <img className="image" src={user.photoURI} alt="request-image" />
+        <img
+          onClick={() =>
+            navigation(generatePath(routes.portfolio.path, { uid: user.uid }))
+          }
+          className={`image ${!user.photoURI ? "no-image" : ""}`}
+          src={user.photoURI || Human}
+          alt="request"
+        />
         <span className="title">{`${user.firstName} ${user.lastName}`}</span>
         <span className="description">{`${user.country} , ${user.city}`}</span>
         <button
