@@ -56,7 +56,7 @@ export class PortfolioViewModel {
   }
 
   get initialized() {
-    return this.donations.initialized;
+    return this?.donations?.initialized;
   }
 
   onClickCard = (userId?: string) => {

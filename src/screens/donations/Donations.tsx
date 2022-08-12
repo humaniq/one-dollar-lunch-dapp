@@ -14,6 +14,7 @@ import { DonationsStore } from "../../App";
 import { currencyFormat } from "../../utils/number";
 import { CURRENCIES } from "../../constants/general";
 import { toJS } from "mobx";
+import SearchIllustration from "../../static/images/Illustation_search.svg";
 
 interface DonationsScreenInterface {
   store: DonationsViewModel;
@@ -62,12 +63,6 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         <div className={"sub-title"}>{t("main.yourDonations")}</div>
       </div>
       <div className="content">
-        {/*<div className="illustration-container">*/}
-        {/*  <img className={"illustration"} src={SearchIllustration} />*/}
-        {/*  <span className={"illustration-label"}>*/}
-        {/*    {t("donations.donationsAppear")}*/}
-        {/*  </span>*/}
-        {/*</div>*/}
         <DonationList
           source={DonationsStore}
           onItemClick={onDonationItemClick}
