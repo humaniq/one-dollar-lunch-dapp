@@ -4,7 +4,7 @@ import { withStore } from "utils/hoc";
 import { DonationsViewModel } from "screens/donations/DonationsViewModel";
 import { observer } from "mobx-react";
 import { IconButton } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from " ../../static/icons/ic_back.svg";
 import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
 import { generatePath, useNavigate } from "react-router-dom";
@@ -49,12 +49,11 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
       <IconButton
         style={{
           alignSelf: "flex-start",
-          marginTop: 16,
           marginBottom: 16,
         }}
         onClick={onBackClick}
       >
-        <ArrowBackIcon sx={{ fontSize: 28, color: colors.blueOcean }} />
+        <img src={ArrowBackIcon} alt={"back"} />
       </IconButton>
       <div className="donations-balance-container">
         <div className={"title"}>
