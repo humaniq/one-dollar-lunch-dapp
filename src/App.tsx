@@ -16,10 +16,10 @@ import { Portfolio } from "screens/portfolio/Portfolio";
 import { Profiles } from "screens/profiles/Profiles";
 import { TransactionDialog } from "./components/transaction-dialog/TransactionDialog";
 import { Transaction } from "./stores/transactionStore";
-import { TransactionMessage } from "./components/transaction-message/TransactionMessage";
 import { Donations as DS } from "./stores/donationsStore";
 import { Donations } from "./screens/donations/Donations";
 import { FeedbackDialog } from "./components/ feedback-dialog/FeedbackDialog";
+import { TransactionModal } from "./components/transaction-modal/TransactionModal";
 
 window.Buffer = b.Buffer;
 
@@ -78,11 +78,6 @@ export const App = observer(() => {
           visible={transactionStore.feedbackDialogVisible}
           onClose={() => transactionStore.setFeedBackDialogVisibility(false)}
         />
-        <TransactionMessage
-          isOpen={transactionStore.transactionMessageVisible}
-          status={transactionStore.transactionMessageStatus}
-          message={transactionStore.transactionMessage}
-        />
         <Snackbar
           open={app.alert.displayAlert}
           autoHideDuration={6000}
@@ -98,6 +93,10 @@ export const App = observer(() => {
           </Alert>
         </Snackbar>
       </div>
+      <TransactionModal
+        status={transactionStore.transactionMessageStatus}
+        visible={transactionStore.transactionMessageVisible}
+      />
     </>
   );
 });
