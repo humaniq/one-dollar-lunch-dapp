@@ -110,7 +110,12 @@
     "pending": "Transaction is pending",
     "success": "Thanks for donation",
     "error": "Error transaction",
-    "denied": "User denied transaction"
+    "denied": "User denied transaction",
+    "approval": "Approval",
+    "wait": "Please wait for the transaction steps:",
+    "step": "{{step}} step:",
+    "donation": "Donation",
+    "wentWrong": "Something went wrong, please repeat"
   },
   "userCard": {
     "label": "Donate $1"

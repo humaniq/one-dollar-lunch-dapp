@@ -11,8 +11,11 @@ import {
 } from "../constants/api";
 import { GetUsersResponse } from "../services/apiService/requests";
 import { UsersStore } from "./usersStore";
-import { TRANSACTION_STATUS } from "../components/transaction-message/TransactionMessage";
 import { t } from "i18next";
+import {
+  TRANSACTION_STATUS,
+  TRANSACTION_STEP,
+} from "components/transaction-modal/TransactionModal";
 
 export class Transaction {
   constructor() {
@@ -24,8 +27,17 @@ export class Transaction {
   displayConfirmView = false;
   transactionDialogVisible = false;
   transactionMessageVisible = false;
+  transactionMessageStatus: TRANSACTION_STEP = {
+    firstStep: {
+      visible: true,
+      message: t("transactionMessage.approval"),
+    },
+    secondStep: {
+      visible: true,
+      message: t("transactionMessage.donation"),
+    },
+  };
   feedbackDialogVisible = false;
-  transactionMessageStatus = TRANSACTION_STATUS.PENDING;
   transactionMessage = "";
   contract: Donation;
   inputFiat = true;
@@ -131,6 +143,11 @@ export class Transaction {
     );
   };
 
+  clear = () => {
+    this.transactionMessageStatus.firstStep.status = undefined;
+    this.transactionMessageStatus.secondStep.status = undefined;
+  };
+
   setValueByCountUsers = () => {
     this.txData.value = this.inputFiat
       ? UsersStore.selectedUsersList.length
@@ -164,35 +181,44 @@ export class Transaction {
   };
 
   sendTransaction = async () => {
+    this.clear();
+
     try {
+      this.transactionMessageVisible = true;
+      this.transactionMessageStatus.firstStep.status =
+        TRANSACTION_STATUS.PENDING;
+
+      this.closeDialog();
+
       const { hash } = await this.contract.donateNativeMultiAddress(
         ethers.utils.parseUnits(this.parsedValue.toString(), 18).toString(),
         this.selectedAddresses
       );
+
       if (hash) {
-        this.closeDialog();
-        this.transactionMessageVisible = true;
+        this.transactionMessageStatus.firstStep.status =
+          TRANSACTION_STATUS.SUCCESS;
+        this.transactionMessageStatus.secondStep.status =
+          TRANSACTION_STATUS.PENDING;
         try {
           await this.contract.waitForTransaction(hash);
           this.setFeedBackDialogVisibility(true);
-          this.transactionMessageVisible = false;
-          // this.transactionMessageStatus = TRANSACTION_STATUS.SUCCESS;
+          this.transactionMessageStatus.secondStep.status =
+            TRANSACTION_STATUS.SUCCESS;
         } catch (e: any) {
-          this.transactionMessageStatus = TRANSACTION_STATUS.ERROR;
+          this.transactionMessageStatus.secondStep.status =
+            TRANSACTION_STATUS.ERROR;
         }
+      } else {
+        this.transactionMessageStatus.firstStep.status =
+          TRANSACTION_STATUS.ERROR;
       }
     } catch (e: any) {
       if (e.code === 4001) {
         this.transactionMessage = t("transactionMessage.denied");
       }
+      this.transactionMessageStatus.firstStep.status = TRANSACTION_STATUS.ERROR;
       this.closeDialog();
-      this.transactionMessageStatus = TRANSACTION_STATUS.ERROR;
-      this.transactionMessageVisible = true;
-    } finally {
-      setTimeout(() => {
-        this.transactionMessageVisible = false;
-        this.transactionMessage = "";
-      }, 3000);
     }
   };
 
