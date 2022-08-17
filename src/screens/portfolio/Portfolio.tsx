@@ -51,7 +51,6 @@ const PortfolioImpl: React.FC<PortfolioInterface> = ({ store: view }) => {
           <IconButton
             style={{
               alignSelf: "flex-start",
-              marginTop: 16,
               marginBottom: 16,
             }}
             onClick={onBackClick}
