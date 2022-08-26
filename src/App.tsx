@@ -20,6 +20,8 @@ import { Donations as DS } from "./stores/donationsStore";
 import { Donations } from "./screens/donations/Donations";
 import { FeedbackDialog } from "./components/ feedback-dialog/FeedbackDialog";
 import { TransactionModal } from "./components/transaction-modal/TransactionModal";
+import { ConnectDialog } from "./components/dialogs/ConnectDialog";
+import { DisconnectDialog } from "./components/dialogs/DisconnectDialog";
 
 window.Buffer = b.Buffer;
 
@@ -70,6 +72,8 @@ export const App = observer(() => {
             </Routes>
           </Router>
         ) : null}
+        <ConnectDialog />
+        <DisconnectDialog />
         <TransactionDialog
           onClose={() => transactionStore.setTransactionDialogVisibility(false)}
           visible={transactionStore.transactionDialogVisible}
