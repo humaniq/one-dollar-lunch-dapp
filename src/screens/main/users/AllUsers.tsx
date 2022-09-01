@@ -3,12 +3,12 @@ import "./AllUsers.sass";
 import { UsersStore } from "../../../stores/usersStore";
 import { observer } from "mobx-react";
 import { User } from "../../../services/apiService/requests";
-import { CircularProgress } from "@mui/material";
-import { t } from "i18next";
+import { CircularProgress, IconButton } from "@mui/material";
 import { CheckBox } from "../../../components/check-box/CheckBox";
 import Human from "../../../static/images/human.svg";
 import { generatePath, useNavigate } from "react-router-dom";
 import routes from "../../../utils/routes";
+import DonateImg from "../../../static/icons/ic_donate.svg";
 
 interface AllUserItemProps {
   onClick: (id: string) => void;
@@ -35,15 +35,20 @@ const UserItem: React.FC<AllUserItemProps> = ({
           src={user.photoURI || Human}
           alt="request"
         />
-        <span className="title">{`${user.firstName} ${user.lastName}`}</span>
-        <span className="description">{`${user.country} , ${user.city}`}</span>
-        <button
-          disabled={multiselectMode}
-          onClick={() => onClick(user.uid)}
-          className={`button ${multiselectMode && "disabled"}`}
-        >
-          {t("userCard.label")}
-        </button>
+        <div className={"data-container"}>
+          <div className={"column"}>
+            <span className="title">{`${user.firstName} ${user.lastName}`}</span>
+            <span className="description">{`${user.country} , ${user.city}`}</span>
+          </div>
+          <IconButton
+            disabled={multiselectMode}
+            onClick={() => onClick(user.uid)}
+            className={`button ${multiselectMode && "disabled"}`}
+          >
+            <img src={DonateImg} alt={"donate"} />
+          </IconButton>
+        </div>
+
         {multiselectMode && (
           <CheckBox
             checked={checked}
