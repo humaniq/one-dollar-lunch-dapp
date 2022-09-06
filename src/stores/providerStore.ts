@@ -28,6 +28,7 @@ export class ProviderStore {
   signer: Signer;
   balance: string;
   nativePrice: number;
+  notSupportedNetwork = false;
 
   constructor() {
     makeAutoObservable(this, undefined, { autoBind: true });

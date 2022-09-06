@@ -129,5 +129,9 @@
     "description": "We want to be the most transparent charity project. Please share your feedback ",
     "later": "May be later",
     "share": "Share feedback"
+  },
+  "connection": {
+    "notSupported": "This network is not supported. Switch to BNB Smart Chain(BSC)",
+    "networkChange": "Network change"
   }
 }

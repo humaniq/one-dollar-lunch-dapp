@@ -22,6 +22,7 @@ import { FeedbackDialog } from "./components/ feedback-dialog/FeedbackDialog";
 import { TransactionModal } from "./components/transaction-modal/TransactionModal";
 import { ConnectDialog } from "./components/dialogs/ConnectDialog";
 import { DisconnectDialog } from "./components/dialogs/DisconnectDialog";
+import { ConnectionNotSupportedModal } from "components/connection-support/ConnectionNotSupportedModal";
 
 window.Buffer = b.Buffer;
 
@@ -100,6 +101,9 @@ export const App = observer(() => {
       <TransactionModal
         status={transactionStore.transactionMessageStatus}
         visible={transactionStore.transactionMessageVisible}
+      />
+      <ConnectionNotSupportedModal
+        isVisible={getProviderStore.notSupportedNetwork}
       />
     </>
   );
