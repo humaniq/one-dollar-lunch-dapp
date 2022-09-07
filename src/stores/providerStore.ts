@@ -90,6 +90,7 @@ export class ProviderStore {
       console.info("disconnect");
       this.currentAccount = null;
       this.balance = "";
+      window.location.reload();
     });
 
     ethereum.on("connect", async (info: any) => {
@@ -218,6 +219,7 @@ export class ProviderStore {
     try {
       localStorage.removeItem("connected");
       localStorage.removeItem("walletconnect");
+      window.location.reload();
     } catch (e) {
       Logcat.error("ERROR", e);
     }
