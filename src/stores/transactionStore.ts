@@ -38,7 +38,6 @@ export class Transaction {
     },
   };
   feedbackDialogVisible = false;
-  transactionMessage = "";
   contract: Donation;
   inputFiat = true;
   symbol = getProviderStore.currentNetwork.nativeSymbol.toUpperCase();
@@ -146,6 +145,7 @@ export class Transaction {
   clear = () => {
     this.transactionMessageStatus.firstStep.status = undefined;
     this.transactionMessageStatus.secondStep.status = undefined;
+    this.transactionMessageStatus.errorMessage = undefined;
   };
 
   setValueByCountUsers = () => {
@@ -214,8 +214,10 @@ export class Transaction {
           TRANSACTION_STATUS.ERROR;
       }
     } catch (e: any) {
-      if (e.code === 4001) {
-        this.transactionMessage = t("transactionMessage.denied");
+      if (e?.code === 4001) {
+        this.transactionMessageStatus.errorMessage = t(
+          "transactionMessage.denied"
+        );
       }
       this.transactionMessageStatus.firstStep.status = TRANSACTION_STATUS.ERROR;
       this.closeDialog();
