@@ -78,7 +78,7 @@ export const TransactionModal = observer(
           />
           <span className="title">
             {showError
-              ? t("transactionMessage.wentWrong")
+              ? status.errorMessage || t("transactionMessage.wentWrong")
               : t("transactionMessage.wait")}
           </span>
           <div className="steps">
