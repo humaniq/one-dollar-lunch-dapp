@@ -19,12 +19,12 @@ export class ProviderStore {
   initialized = false;
   currentAccount: any = null;
   hasProvider = false;
-  currentProvider: any; // ethers.providers.Web3Provider | WalletConnectProvider
+  currentProvider: any;
   chainId: number;
   connectDialog = false;
   disconnectDialog = false;
   connectedProvider: PROVIDERS;
-  currentNetworkName = EVM_NETWORKS_NAMES.BSC_TESTNET;
+  currentNetworkName = EVM_NETWORKS_NAMES.BSC;
   signer: Signer;
   balance: string;
   nativePrice: number;
@@ -94,7 +94,6 @@ export class ProviderStore {
     });
 
     ethereum.on("connect", async (info: any) => {
-      console.log("connect");
       if (parseInt(info.chainId, 16) === this.currentNetwork.chainID) return;
       console.log("connect");
       await this.updateBalances();
@@ -177,12 +176,30 @@ export class ProviderStore {
 
   connectToWeb3 = async () => {
     try {
-      const accounts = await this.currentProvider.provider.request({
-        method: "eth_requestAccounts",
+      const chainId = await this.currentProvider.provider.request({
+        method: "eth_chainId",
       });
 
-      this.currentAccount = accounts[0];
-      await this.updateBalances();
+      const chain = Object.values(EVM_NETWORKS).find(
+        (item) => item.chainID === +chainId
+      );
+
+      if (chain) {
+        this.notSupportedNetwork = false;
+        this.chainId = chain.chainID;
+        this.currentNetworkName = chain.name;
+
+        const accounts = await this.currentProvider.provider.request({
+          method: "eth_requestAccounts",
+        });
+
+        this.currentAccount = accounts[0];
+        await this.updateBalances();
+      } else {
+        this.chainId = +chainId;
+        this.notSupportedNetwork = true;
+        this.currentAccount = null;
+      }
     } catch (e) {
       Logcat.info("ERROR", e);
     }
@@ -198,19 +215,6 @@ export class ProviderStore {
         this.currentAccount,
       ],
     });
-  };
-
-  connect = async () => {
-    if (!this.currentProvider || this.currentProvider?.provider.currentAccount)
-      return;
-    try {
-      const accounts = await this.currentProvider.provider.request({
-        method: "eth_requestAccounts",
-      });
-      this.currentAccount = accounts[0];
-    } catch (e) {
-      Logcat.info("ERROR", e);
-    }
   };
 
   disconnect = () => {
