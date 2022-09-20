@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { FilterDialog } from "screens/main/filter/FilterDialog";
 import { UsersStore } from "../../stores/usersStore";
 import { renderShortAddress } from "../../utils/address";
+import { NETWORK_TYPE } from "constants/network";
 
 interface MainScreenInterface {
   store: MainViewModel;
@@ -36,7 +37,12 @@ const MainImpl: React.FC<MainScreenInterface> = ({ store: view }) => {
   return (
     <div className="container">
       <div className="header">
-        <div className="title">{t("appName")}</div>
+        <div className="title">
+          {t("appName")}
+          {getProviderStore.currentNetwork.env === NETWORK_TYPE.TEST
+            ? `${t("testNet")}`
+            : ""}
+        </div>
         <button
           onClick={view.toggleDialogOrDisconnectWallet}
           className="wallet-connect"
