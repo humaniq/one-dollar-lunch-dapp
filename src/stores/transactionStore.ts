@@ -214,7 +214,7 @@ export class Transaction {
           TRANSACTION_STATUS.ERROR;
       }
     } catch (e: any) {
-      if (e?.code === 4001) {
+      if (e?.code === 4001 || e?.message === "user reject request") {
         this.transactionMessageStatus.errorMessage = t(
           "transactionMessage.denied"
         );
