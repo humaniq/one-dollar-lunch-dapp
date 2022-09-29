@@ -101,7 +101,7 @@ export class ProviderStore {
     });
 
     ethereum.on("chainChanged", async (chainId: string) => {
-      if (parseInt(chainId, 16) === this.currentNetwork.chainID) return;
+      if (parseInt(chainId, 16) === this.chainId) return;
       this.chainId = parseInt(chainId, 16);
       await this.init();
       await transactionStore.init();
