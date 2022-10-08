@@ -121,6 +121,8 @@ export class MainViewModel {
   };
 
   onCardClick = (type?: DONATION_CLICK_TYPE, userId?: string) => {
+    if (!getProviderStore.currentAccount)
+      return (getProviderStore.connectDialog = !getProviderStore.connectDialog);
     if (type === DONATION_CLICK_TYPE.DEFAULT) {
       UsersStore.selectedUsers.clear();
       userId && UsersStore.selectedUsers.add(userId);

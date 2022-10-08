@@ -4,7 +4,7 @@ import { withStore } from "utils/hoc";
 import { DonationsViewModel } from "screens/donations/DonationsViewModel";
 import { observer } from "mobx-react";
 import { IconButton } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from " ../../static/icons/ic_back.svg";
 import { t } from "i18next";
 import { DonationList } from "screens/donations/list/DonationList";
 import { generatePath, useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import { DonationsStore } from "../../App";
 import { currencyFormat } from "../../utils/number";
 import { CURRENCIES } from "../../constants/general";
 import { toJS } from "mobx";
+import SearchIllustration from "../../static/images/Illustation_search.svg";
 
 interface DonationsScreenInterface {
   store: DonationsViewModel;
@@ -48,12 +49,11 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
       <IconButton
         style={{
           alignSelf: "flex-start",
-          marginTop: 16,
           marginBottom: 16,
         }}
         onClick={onBackClick}
       >
-        <ArrowBackIcon sx={{ fontSize: 28, color: colors.blueOcean }} />
+        <img src={ArrowBackIcon} alt={"back"} />
       </IconButton>
       <div className="donations-balance-container">
         <div className={"title"}>
@@ -62,12 +62,6 @@ const DonationsImpl: React.FC<DonationsScreenInterface> = ({ store: view }) => {
         <div className={"sub-title"}>{t("main.yourDonations")}</div>
       </div>
       <div className="content">
-        {/*<div className="illustration-container">*/}
-        {/*  <img className={"illustration"} src={SearchIllustration} />*/}
-        {/*  <span className={"illustration-label"}>*/}
-        {/*    {t("donations.donationsAppear")}*/}
-        {/*  </span>*/}
-        {/*</div>*/}
         <DonationList
           source={DonationsStore}
           onItemClick={onDonationItemClick}

@@ -11,6 +11,7 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 
 export enum TRANSACTION_STATUS {
+  IDLE = "idle",
   PENDING = "pending",
   SUCCESS = "success",
   ERROR = "error",

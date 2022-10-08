@@ -3,7 +3,6 @@
 .users
   display: flex
   flex-direction: row
-  flex: 1
   flex-wrap: wrap
   margin-top: 14px
 
@@ -19,59 +18,59 @@
   flex: 1 1
   min-width: 50%
   flex-direction: column
-  background-color: $white-snow
+  background-color: $white
   border-radius: 14px
-  padding: 8px
   margin: 8px 8px 12px
-  box-shadow: 0 0 1px rgba(40, 41, 61, 0.04), 0 2px 4px rgba(96, 97, 112, 0.16)
   justify-content: space-between
   .image
-    border-radius: 14px 14px 0 0
-    height: 98px
+    border-radius: 14px
+    min-height: 156px
     object-fit: cover
     cursor: pointer
     &.no-image
       background-color: $blue-light
       object-fit: contain
       padding: 10px
-  .title
-    font-style: normal
-    font-weight: 500
-    margin-top: 8px
-    font-size: 13px
-    line-height: 16px
+  .data-container
+    position: absolute
     display: flex
+    background: rgba(255, 255, 255, 0.4)
+    backdrop-filter: blur(4px)
+    bottom: 4px
+    left: 4px
+    border-radius: 8px
+    padding: 6px
+    width: calc(100% - 8px)
+    justify-content: space-between
     align-items: center
-    letter-spacing: 0.5px
-    color: $blue-ocean
-  .description
-    font-style: normal
-    font-weight: 400
-    margin-top: 4px
-    font-size: 13px
-    line-height: 16px
-    display: flex
-    align-items: center
-    letter-spacing: 0.5px
-    color: $grey-text
-    flex: none
-  .button
-    cursor: pointer
-    background-color: $primary-light
-    color: $blue-primary
-    margin-top: 8px
-    padding: 10px
-    border: none
-    border-radius: 12px
-    font-style: normal
-    font-weight: 500
-    font-size: 14px
-    line-height: 16px
-    text-align: center
-    letter-spacing: 0.5px
-    &:hover
-      background-color: $blue-primary
-      color: $white-snow
-    &.disabled
-      background-color: $primary-light
-      color: $blue-primary
+    .column
+      overflow: hidden
+      .title
+        font-style: normal
+        font-weight: 500
+        font-size: 12px
+        line-height: 16px
+        display: flex
+        align-items: center
+        letter-spacing: 0.5px
+        color: $black-text
+      .description
+        font-style: normal
+        font-weight: 400
+        font-size: 10px
+        line-height: 16px
+        display: flex
+        align-items: center
+        letter-spacing: 0.5px
+        color: $black-text
+        flex: none
+    .button
+      cursor: pointer
+      background-color: $grey-bg
+      width: 36px
+      height: 36px
+      &:hover
+        background-color: $white-snow
+      &.disabled
+        background-color: $primary-light
+        color: $blue-primary

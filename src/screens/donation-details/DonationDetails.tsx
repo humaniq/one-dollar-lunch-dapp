@@ -62,7 +62,6 @@ const DonationDetailsImpl: React.FC<DonationDetailsInterface> = ({
       <IconButton
         style={{
           alignSelf: "flex-start",
-          marginTop: 16,
           marginBottom: 16,
         }}
         onClick={onBackClick}

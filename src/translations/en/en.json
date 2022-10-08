@@ -27,6 +27,7 @@
   "notConnectedTitle": "Connect your wallet to see and edit your Humaniq ID information",
   "photoUploading": "Photo is uploading",
   "uploading": "Uploading",
+  "testNet": "(Testnet)",
   "general": {
     "maybeLater": "Maybe later"
   },
@@ -110,7 +111,12 @@
     "pending": "Transaction is pending",
     "success": "Thanks for donation",
     "error": "Error transaction",
-    "denied": "User denied transaction"
+    "denied": "User denied transaction",
+    "approval": "Approval",
+    "wait": "Please wait for the transaction steps:",
+    "step": "{{step}} step:",
+    "donation": "Donation",
+    "wentWrong": "Something went wrong, please repeat"
   },
   "userCard": {
     "label": "Donate $1"
@@ -124,5 +130,9 @@
     "description": "We want to be the most transparent charity project. Please share your feedback ",
     "later": "May be later",
     "share": "Share feedback"
+  },
+  "connection": {
+    "notSupported": "This network is not supported. Switch to BNB Smart Chain(BSC)",
+    "networkChange": "Network change"
   }
 }

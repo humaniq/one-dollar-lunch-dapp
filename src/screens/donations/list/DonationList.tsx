@@ -8,6 +8,7 @@ import { CircularProgress } from "@mui/material";
 import { observer } from "mobx-react";
 import dayjs from "dayjs";
 import { renderShortAddress } from "../../../utils/address";
+import SearchIllustration from "../../../static/images/Illustation_search.svg";
 
 interface DonationListProps {
   onItemClick: (item: UserDonation) => void;
@@ -98,6 +99,15 @@ export const DonationList: React.FC<DonationListProps> = observer(
                 onClick={onItemClick}
               />
             ))}
+          {source?.donations?.initialized &&
+            source.donations.list.length === 0 && (
+              <div className="illustration-container">
+                <img className={"illustration"} src={SearchIllustration} />
+                <span className={"illustration-label"}>
+                  {t("donations.donationsAppear")}
+                </span>
+              </div>
+            )}
         </div>
       </div>
     );
